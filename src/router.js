@@ -7,9 +7,7 @@ const route = (event) => {
 
 const routes = {
   404: "/pages/404.html",
-  "/": "/src/pages/login.html",
-  "/src": "/src/pages/login.html",
-  "/index.html": "/src/pages/login.html",
+  "/src/index.html": "/src/pages/login.html",
   "/dashboard.html": "/src/pages/dashboard.html",
 };
 
