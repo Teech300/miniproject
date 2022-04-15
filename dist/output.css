@@ -468,6 +468,35 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.table {
+  display: table;
+}
+
+.table-auto {
+  table-layout: auto;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-r-4 {
+  border-right-width: 4px;
+}
+
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -480,4 +509,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
+}
+
+.decoration-white {
+  -webkit-text-decoration-color: #fff;
+          text-decoration-color: #fff;
+}
+
+.caret-white {
+  caret-color: #fff;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
