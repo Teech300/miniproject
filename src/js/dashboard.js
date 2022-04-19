@@ -1,74 +1,86 @@
-const allPokemon = [];
-let scoreDiv = document.querySelector("div.scoreboard");
-let tableHeaders = ["Id", "Name", "Abilities", "Experience"];
-let displayRow = [5, 10, 15, 20];
+const mail = []
 
-const filterTable = (usersInput) => {
-  if (usersInput !== null || usersInput !== "") {
-    apiAllPokemon();
-  } else {
-    // filter
-  }
-};
+async function AxyCall() {
+  const poke1 = await axios.get('https://pokeapi.co/api/v2/pokemon/1');
+  console.log(poke1)
+  let one = poke1.data.moves
 
-const apiAllPokemon = () => {
-  fetch("https://pokeapi.co/api/v2/pokemon")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-      detailsPokemon(data.results);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
+  resel(one)
+}
 
-const detailsPokemon = (data) => {
-  data.map((element) => {
-    fetch(element.url)
-      .then((res) => res.json())
-      .then((response) => {
-        console.log(response);
-        allPokemon.push({
-          id: response.id,
-          name: response.name,
-          abilities: response.abilities.length,
-          experience: response.base_experience,
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  });
-};
+function ChangeImpostazioni(elem) {
+  let img = elem
+  // img.style.width = '200px'
+}
 
-const createHeaderTable = () => {
-  while (scoreDiv.firstChild) scoreDiv.removeChild(scoreDiv.firstChild);
 
-  let scoreTable = document.createElement("table");
-  scoreTable.style.tableLayout = "fixed";
-  scoreTable.style.width = "75%";
-  scoreTable.style.border = "1px solid gray";
-  scoreTable.style.margin = "5% 10%";
+function resel(poke1) {
+  poke1.map((x) => {
+    let name = x.move.name
+    let url = x.move.url
+    mail.push({ name, url })
+    CreateTabledd()
+  })
 
-  let scoreThead = document.createElement("thead");
-  let scoreTr = document.createElement("tr");
-  let scoreTbody = document.createElement("tbody");
 
-  tableHeaders.forEach((header) => {
-    let scoreTh = document.createElement("th");
-    scoreTh.innerText = header;
-    scoreTr.append(scoreTh);
-  });
-  scoreThead.append(scoreTr);
+}
 
-  let scoreTdId = (document.createElement("td").innerText = allPokemon[0]);
 
-  scoreTable.append(scoreThead, scoreTbody);
-  scoreDiv.append(scoreTable);
-  console.log(allPokemon[0]);
-  console.log(allPokemon);
-};
+// function allowDrop(ev) {
+//   ev.preventDefault();
 
-apiAllPokemon();
-createHeaderTable();
+//   // ev.target.style.border = "1px solid red";
+// }
+
+// function drag(ev) {
+//   ev.dataTransfer.setData("text", ev.target.id);
+//   const element = ev.target
+
+// }
+
+// function drop(ev) {
+//   ev.preventDefault();
+//   var data = ev.dataTransfer.getData("text");
+
+//   ev.target.appendChild(document.getElementById(data));
+
+// }
+function allowDrop(ev) {
+  ev.preventDefault();
+
+}
+
+function drag(ev) {
+
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  // const y = ev.target
+  // y.remove()
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  console.log(ev.target)
+  ev.target.appendChild(document.getElementById(data));
+}
+const dragTable = document.querySelector('#scoreboard')
+// const dragTablea = document.querySelector('#scoreboarda')
+const dragTableab = document.querySelector('#scoreboardb')
+function CreateTabledd() {
+  mail.map((x, i) => {
+    const list1 = document.createElement('div')
+    list1.innerHTML = '<div id="div1[' + i + ']" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px solid grey;width:500px;height:50px;display:flex;justify-content:center;align-items:center;margin:2px;">' + '<p draggable="true" ondragstart="drag(event)" id="drag1[' + i + ']" class="immagini">' + x.name + '-' + x.url + '</p>' + '</div>'
+    dragTable.appendChild(list1)
+
+    // // const maillist = document.createElement('div')
+    // // maillist.innerHTML = '<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px solid grey;width:300px;height:50px;">' + '<p draggable="true" ondragstart="drag(event)" id="drag1[' + i + ']" class="immagini" onclick="ChangeImpostazioni(elem)">' + x.url + '</p>' + '</div>'
+    // // dragTablea.appendChild(maillist)
+
+    const maillista = document.createElement('div')
+    maillista.innerHTML = '<div id="div2[' + i + ']" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px solid grey;width:500px;height:50px;display:flex;justify-content:center;align-items:center;margin:2px;"></div>'
+    dragTableab.appendChild(maillista)
+  })
+}
+console.log(mail)
+AxyCall();
+

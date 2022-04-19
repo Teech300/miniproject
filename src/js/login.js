@@ -228,7 +228,13 @@ function Ricerca() {
   let inputPassword = document.querySelector("#password");
   let matchPassword = inputPassword.value;
   console.log(matchPassword);
-  Filtro(matchMail, matchPassword);
+
+  if (matchMail && matchPassword) {
+    Filtro(matchMail, matchPassword);
+  } else {
+    document.getElementById('error').innerHTML = '<h2 style="color:red">COMPILA TUTTI I CAMPI,GRAZIE</h2>'
+  }
+
 }
 
 function Filtro(matchMail, matchPassword) {
