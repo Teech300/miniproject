@@ -2,28 +2,29 @@
   <link rel="stylesheet" href="/src/pages/css/login.css" />
 </head>
 
-<div class="page-container">
-  <div id="container-login">
-    <div id="design-pattern" style="padding:10px;">
-      <h1 style="align-self: center;color:#fff;text-align:center;">LOGIN</h1>
-    </div>
-    <div id="login-forms">
 
-
-      <div id="login">
-        <h1 style="align-self: center;color:black;font-size:20px;">Vieni a dare un occhio ai nostri pokemon!</h1>
-        <input type="text" id="mail" value="" placeholder="Mail" />
-        <input type="password" id="password" placeholder="Password" />
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <button onclick="Ricerca()">Invia</button>
-        <div id="error"></div>
-
-      </div>
+<div id="container-login">
+  <div id="design-pattern" style="padding:10px;">
+    <h1 style="align-self: center;color:#fff;text-align:center;">LOGIN</h1>
+  </div>
+  <div id="login-forms">
+    <div id="login">
+      <h1 style="align-self: center;color:rgb(255, 255, 255);font-size:40px;"><i
+          class="fa-solid fa-arrow-turn-down"></i></h1>
+      <input type="text" id="mail" value="" placeholder="Mail" style="background-color: #4bb6e893;color:#fff" />
+      <input type="password" id="password" placeholder="Password" style="background-color: #ed23b7bc; color:#fff" />
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <button onclick="Ricerca()">Invia</button>
+      <div id="error"></div>
 
     </div>
+
   </div>
 
-</div>
 
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="/src/js/login.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>

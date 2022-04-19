@@ -13,8 +13,12 @@ hr {
 
 #login-forms {
   padding: 0 30px;
-  width: 65%;
+  width: 60%;
   height: 90vh;
+  background-image: url('../../../img/Background.png');
+  background-size: cover;
+  background-position: 400px;
+
 }
 
 * {
@@ -82,16 +86,18 @@ hr {
   width: 90%;
   height: 90vh;
   margin: 4vh 4%;
+  background-color: #D3D4D4;
+  border-radius: 40px;
+  border: 5px solid rgb(183, 183, 183);
 
-  padding: 10px;
 
 }
 
 #design-pattern {
-  width: 35%;
-  height: 90vh;
-  border-radius: 20px;
-
+  width: 40%;
+  height: 100%;
+  border-radius: 40px;
+  opacity: 0.9;
   background-image: url('../../../img/woman.jpg');
   background-size: cover;
 }
@@ -125,4 +131,44 @@ hr {
 .socials-card>i {
   font-size: 1.5rem;
   margin-right: 0.5rem;
+}
+
+::placeholder {
+  color: rgb(255, 255, 255);
+  opacity: 1;
+  /* Firefox */
+}
+
+
+@media screen and (max-width: 1000px) {
+  #container-login {
+    display: block;
+    width: 90%;
+    height: 90vh;
+    margin: 4vh 4%;
+    background-color: #D3D4D4;
+    border-radius: 40px;
+    border: 5px solid rgb(183, 183, 183);
+
+  }
+
+  #design-pattern {
+    width: 100%;
+    height: 40%;
+    border-radius: 40px;
+    opacity: 0.9;
+    background-image: url('../../../img/woman.jpg');
+    background-size: cover;
+  }
+
+  #login-forms {
+    padding: 0 30px;
+    width: 100%;
+    height: 60%;
+    background-image: url('../../../img/Background.png');
+    background-size: cover;
+    background-position: 400px;
+
+  }
+
 }

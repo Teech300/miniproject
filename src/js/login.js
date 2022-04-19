@@ -162,59 +162,6 @@ const mail = [
   { mail: "ufficiopmnobili.procura.milano@giustizia.it", password: "password" },
 ];
 
-// const password = [
-//     'xLggWqzN2wrPAMIj',
-//     't7xLHkZe98cWNwpD',
-//     'JIx9fEySWGnO7hHK',
-//     '9ZsKOj3rboUhlxlr',
-//     '4PvtY579Vb1sCF3H',
-//     'riq1KVOCpBgZ1HIv',
-//     '9FsIB0zPyEN4zsO2',
-//     'BO9qMUqFDwgfx1Xq',
-//     'r5zd8BCTkS6GU2f3',
-//     '2LdMkOCe8QrRhgDq',
-//     '4SuuHVvIBojtuHwy',
-//     'ERyRYoWEIGFq4pzY',
-//     '7dDWqoxT2Ybo0AQT',
-//     '7W9U40jfBvil2Iyd',
-//     'fYzPKLGDKZDnBXI4',
-//     'BODuGgAyxgTRZ4J7',
-//     'e10xgQnXDhvajM8k',
-//     'Ar9iysCQUtOtIA6z',
-//     'AtoII60mEaJD2bw4',
-//     'qx2MFjyCmg88YiBV',
-//     '8s5P87MkQwemrXWl',
-//     'cE1LEcozbS5KLETz',
-//     'VeUdWYcGZwrrW65i',
-//     '9k9WHh7ccQA86aG6',
-//     'eLNngQoVZs1rWceW',
-//     'okGNlD5qywX09PKZ',
-//     'YQDEhBAt3d3NZzr5',
-//     'ohfm0YwDjGpkJHlP',
-//     'Rsvcx186RZFjJFD3',
-//     'yY2eKXFMhtZJwk4b',
-//     'OTDzS0w8MWfgUIPC',
-//     'dGkghUNIKRzDQGIP',
-//     'aSyMNxQ5GNQeE5HG',
-//     'EwjkNZPlgM2A9ehn',
-//     'q4XOI4L6VtLzNoOp',
-//     '6KpUCFvfw3TEt6S3',
-//     'OB8pwGXRp7LxOoHH',
-//     'uQC4BwsL0FFusjXY',
-//     'EMuiKy3HHkh6eMSC',
-//     'mRHZVwTkhlZe61y9',
-//     'DZzv5FU6ZXPtfNQM',
-//     'eN8HTe1dxLjZAMRQ',
-//     'WzjUdF4CvWLrCuud',
-//     'Cu9o91K5WWCi4V1t',
-//     'QMmRjasbiutCHntk',
-//     'oXxw4irarKtO2npK',
-//     'uo8OnF6MKcxcwTT8',
-//     '78UIM1LVsHi9GIJk',
-//     'DFuEwi1POuiSdHJ5',
-//     'TMR1lZILmtOGQ00m',
-// ]
-
 let boolmail = false;
 let boolpass = false;
 
@@ -232,7 +179,7 @@ function Ricerca() {
   if (matchMail && matchPassword) {
     Filtro(matchMail, matchPassword);
   } else {
-    document.getElementById('error').innerHTML = '<h2 style="color:red">COMPILA TUTTI I CAMPI,GRAZIE</h2>'
+    document.getElementById('error').innerHTML = '<h2 style="background: -webkit-linear-gradient(#D91CF0, #ED684C);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">COMPILA TUTTI I CAMPI,GRAZIE</h2>'
   }
 
 }
