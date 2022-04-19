@@ -4,13 +4,17 @@
 
 <div class="page-container">
   <div id="container-login">
-    <div id="design-pattern"></div>
+    <div id="design-pattern" style="padding:10px;">
+      <h1 style="align-self: center;color:#fff;text-align:center;">LOGIN</h1>
+    </div>
     <div id="login-forms">
-      <h1 style="align-self: center">LOGIN</h1>
+
 
       <div id="login">
-        <input type="text" id="mail" value="" />
-        <input type="password" id="password" />
+        <h1 style="align-self: center;color:black;font-size:20px;">Vieni a dare un occhio ai nostri pokemon!</h1>
+        <input type="text" id="mail" value="" placeholder="Mail" />
+        <input type="password" id="password" placeholder="Password" />
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <button onclick="Ricerca()">Invia</button>
         <div id="error"></div>
 
@@ -22,3 +26,4 @@
 </div>
 
 <script src="/src/js/login.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>

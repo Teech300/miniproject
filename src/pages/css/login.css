@@ -12,7 +12,7 @@ hr {
 }
 
 #login-forms {
-  padding: 30px;
+  padding: 0 30px;
   width: 65%;
   height: 90vh;
 }
@@ -25,10 +25,12 @@ hr {
 
 #login {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  width: 30%;
-  margin: auto;
   width: 100%;
+  margin: auto;
+  height: 100%;
 }
 
 #login input,
@@ -54,10 +56,10 @@ hr {
   list-style: none;
 }
 
-/* #root {
-    display: flex;
-    height: 100%;
-} */
+#root {
+
+  height: 100vh;
+}
 
 #main-page {
   flex-grow: 1;
@@ -88,8 +90,9 @@ hr {
 #design-pattern {
   width: 35%;
   height: 90vh;
+  border-radius: 20px;
 
-  background-image: url('../../../img/man.jpg');
+  background-image: url('../../../img/woman.jpg');
   background-size: cover;
 }
 
