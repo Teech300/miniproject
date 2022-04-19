@@ -1,23 +1,21 @@
 <head>
-  <link href="../../dist/output.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/pages/css/dashboard.css" />
 </head>
+
 <h4>take the name of the pokemon and released into the empty container</h4>
-<div style="display: flex">
-  <div
-    id="col-left"
-    style="left: 25%"
-    class="relative w-64 pr-1 overflow-y-auto border-2 rounded-lg top-20 h-80 border-y-orange-500"
-  ></div>
-  <div
-    style="left: 40%"
-    id="col-right"
-    class="relative w-64 pr-1 overflow-y-auto border-2 rounded-lg top-20 h-80 border-y-orange-500"
-  ></div>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+<div style="display: flex;">
+  <div id="div1"></div>
+  <div style="display:block;">
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"
+      style="border:1px solid grey;width:500px;height:50px;display:flex;justify-content:center;align-items:center;margin:2px;">
+    </div>
+    <div style="border:1px solid rgb(0, 0, 0);height:500px;width:500px;overflow:scroll;display:flex;flex-wrap: wrap;"
+      id="jsonapi">
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
     integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../js/dashboard.js"></script>
 </div>

@@ -1,3 +1,9 @@
 #scoreboard {
   border: 1px solid red;
 }
+
+#div1,
+#div2 {
+  height: 90vh;
+  overflow: scroll;
+}
