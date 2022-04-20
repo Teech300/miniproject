@@ -49,11 +49,6 @@ function checkLogin(event) {
     controlEmailAndPassword(email, password);
   }
 
-  // if (matchMail && matchPassword) {
-  //   Filtro(matchMail, matchPassword);
-  // } else {
-  //   document.getElementById('error').innerHTML = '<h2 style="background: -webkit-linear-gradient(#D91CF0, #ED684C);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">COMPILA TUTTI I CAMPI,GRAZIE</h2>'
-  // }
 }
 
 function controlEmailAndPassword(matchMail, matchPassword) {
