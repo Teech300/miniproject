@@ -61,10 +61,12 @@ const getAllpokemon = async (match) => {
     filteredArray.map((x, i) => {
       getUser(x.name)
 
-      const htmlelement = '<div id="div1[' + i + ']" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px solid grey;width:500px;height:100px;display:flex;justify-content:center;align-items:center;margin:2px;"  class="immagini1">' + '<p draggable="true" ondragstart="drag(event)" id="drag1[' + i + ']" class="immagini">' + i + ' - ' + x.name + "</p>" + "</div>";
+      const htmlelement = '<div id="div1[' + i + ']" ondrop="drop(event)" ondragover="allowDrop(event)" style="border:1px solid grey;width:100%;height:300px;display:flex;border-radius:10px;justify-content:center;align-items:center;margin:2px;"  class="immagini1">' + '<p draggable="true" ondragstart="drag(event)" id="drag1[' + i + ']" class="immagini">' + i + ' - ' + x.name + "</p>" + "</div>";
       let url = x.url
       allPokemon.push(url)
       const list1 = document.createElement("div");
+      list1.style.width = 'calc(50% - 0px)'
+
       list1.innerHTML = htmlelement
 
       div1.appendChild(list1);
@@ -96,7 +98,7 @@ async function axioscall(i) {
   const poke1 = await axios.get(allPokemon[i]);
   let one = poke1.data.moves;
   one.map((x) => {
-    const list11 = document.createElement("div");
+    const list11 = document.createElement("li");
     list11.id = 'cancel'
     list11.innerHTML = i + x.move.name
     jsonapi.appendChild(list11);
@@ -105,7 +107,6 @@ async function axioscall(i) {
 
 // apiimapixabay
 async function getUser(name) {
-
   try {
     const response = await axios.get('https://pixabay.com/api/?key=26732894-7ab7a716c214b455a08379fe1&q=' + name + '&image_type=photo&per_page=200');
     const apiImage = response.data.hits;
@@ -116,7 +117,7 @@ async function getUser(name) {
       image.style.width = '100px'
       image.id = 'immaginipokem'
       image.src = x.largeImageURL
-      div1.appendChild(image);
+      // div1.appendChild(image);
       console.log(image)
 
     })
