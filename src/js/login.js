@@ -1,14 +1,14 @@
 const usersList = [
   {
-    mail: "taher@sysdata.com",
+    mail: "taher@sysdata.it",
     password: "password",
   },
   {
-    mail: "andrea@sydata.com",
+    mail: "andrea@sydata.it",
     password: "password",
   },
   {
-    mail: "alberto@sysdata.com",
+    mail: "alberto@sysdata.it",
     password: "password",
   },
 ];
