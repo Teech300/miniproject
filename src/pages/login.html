@@ -2,29 +2,44 @@
   <link rel="stylesheet" href="/src/pages/css/login.css" />
 </head>
 
-
 <div id="container-login">
-  <div id="design-pattern" style="padding:10px;">
-    <h1 style="align-self: center;color:#fff;text-align:center;">LOGIN</h1>
+  <div id="design-pattern" class="p-2.5">
+    <h1 class="login-title">LOGIN</h1>
   </div>
   <div id="login-forms">
-    <div id="login">
-      <h1 style="align-self: center;color:rgb(255, 255, 255);font-size:40px;"><i
-          class="fa-solid fa-arrow-turn-down"></i></h1>
-      <input type="text" id="mail" value="" placeholder="Mail" style="background-color: #4bb6e893;color:#fff" />
-      <input type="password" id="password" placeholder="Password" style="background-color: #ed23b7bc; color:#fff" />
+    <form onsubmit="checkLogin(event)" id="login">
+      <div class="container-icon">
+        <i class="fa-solid fa-arrow-turn-down"></i>
+      </div>
+
+      <input
+        type="email"
+        id="mail"
+        value=""
+        placeholder="Enter your email"
+        class="email"
+        onclick="changeTemplate('mail', 'email', 'email-error')"
+      />
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        class="password"
+        onclick="changeTemplate('password', 'password', 'password-error')"
+      />
+
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      <button onclick="Ricerca()" style="background-color: #e98b51ce;color:#fff;">Invia</button>
+      <button type="submit" class="button-submit">Login</button>
       <div id="error"></div>
-
-    </div>
-
+    </form>
   </div>
-
-
 </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
   integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 <script src="/src/js/login.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
