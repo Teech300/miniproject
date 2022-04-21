@@ -33,18 +33,21 @@ function allowDrop(ev) {
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
   eventTarget = ev.target;
-
 }
 
 document.addEventListener("dragenter", function (event) {
   if (event.target.id == "div2") {
-    event.target.style.border = "3px dotted red";
-
+    const eventObj = event.target
+    // eventObj.style.border = "3px dotted red";
+    eventObj.style = "background-image:url('../../img/pokemonlogo.png' );"
   }
 });
 document.addEventListener("dragleave", function (event) {
   if (event.target.id == "div2") {
-    event.target.style.border = "1px solid grey";
+    const eventObj = event.target
+    // eventObj.style.border = "1px solid grey";
+    eventObj.style.backgroundImage = ""
+
   }
 });
 
@@ -153,10 +156,10 @@ async function axioscall(i) {
   const poke1 = await axios.get(allPokemon[i]);
   let one = poke1.data.moves;
   one.map((x) => {
-    const list11 = document.createElement("li");
-    list11.id = "cancel";
-    list11.innerHTML = i + x.move.name;
-    jsonapi.appendChild(list11);
+    const listaNomiPokemon = document.createElement("p");
+    listaNomiPokemon.id = "cancel";
+    listaNomiPokemon.innerHTML = x.move.name;
+    jsonapi.appendChild(listaNomiPokemon);
   });
 }
 
@@ -192,6 +195,8 @@ function cancelButton(element) {
     deletecancel(canc)
     element.remove();
     getAllpokemon(match);
+    // div2.style.border = "1px solid grey";
+    div2.style.backgroundImage = ""
   })
   div2.appendChild(buttonix);
 }

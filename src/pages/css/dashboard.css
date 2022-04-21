@@ -2,15 +2,45 @@
   border: 1px solid red;
 }
 
-#div1,
-#div2 {
-  height: 90vh;
+#div1 {
+  border: 1px solid grey;
+  margin: 1px;
+  height: 78.5vh;
+  flex-wrap: wrap;
   overflow: scroll;
   display: flex;
+  width: 50%;
+  border: 1px solid grey;
+  margin: 1px;
+  height: 80vh;
+  flex-wrap: wrap;
+}
+
+
+
+.w-full {
+  height: 40px;
+}
+
+#input {
+  width: 100%;
+  height: 40px;
 }
 
 #div2 {
+  border: 1px solid grey;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
   position: relative;
+  background-size: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20vh;
+  overflow: scroll;
+  display: flex;
+  border: 1px solid grey;
 }
 
 /* width */
@@ -77,7 +107,18 @@
   color: rgb(219, 0, 0);
 }
 
+#jsonapi {
+  padding: 10px 30px;
+  margin: 1px;
+  border: 1px solid rgb(0, 0, 0);
+  height: 57vh;
+  /* width: 100%; */
+  overflow: scroll;
+}
+
 /* 
+
 .dropchangecolorborder {
   border: 3px dotted red;
+  background-image: "url('../../img/pokemonlogo.png' );";
 } */
