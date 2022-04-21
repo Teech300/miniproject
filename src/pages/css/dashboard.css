@@ -9,6 +9,10 @@
   display: flex;
 }
 
+#div2 {
+  position: relative;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 0px;
@@ -52,4 +56,18 @@
 
 .immagini1 {
   width: 48%;
+}
+
+.buttondelete {
+  border: 1px solid grey;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: rgb(219, 0, 0);
 }
