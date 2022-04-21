@@ -21,6 +21,9 @@ inputdiRicerca.addEventListener("keyup", function (e) {
   deleter();
   match = e.target.value;
   console.log(match);
+
+  const container = document.querySelector('#containerUniv')
+  container.classList.add("containerUniv");
   getAllpokemon(match);
 });
 // FUNZIONERICERCA
@@ -29,6 +32,8 @@ inputdiRicerca.addEventListener("keyup", function (e) {
 function allowDrop(ev) {
   ev.preventDefault();
 }
+
+
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
