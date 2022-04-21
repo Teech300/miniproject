@@ -2,16 +2,24 @@ const usersList = [
   {
     mail: "taher@sysdata.it",
     password: "password",
+    id: '01Axsert'
   },
   {
     mail: "andrea@sydata.it",
     password: "password",
+    id: '4Ecfg35'
   },
   {
     mail: "alberto@sysdata.it",
     password: "password",
+    id: 'Ait75!ssD'
   },
 ];
+let khiave = []
+usersList.map((x) => {
+  khiave.push(x.id.slice(0))
+})
+window.localStorage.setItem('ciao', khiave);
 
 function validateEmail(email) {
   return String(email)
@@ -62,7 +70,7 @@ function controlEmailAndPassword(matchMail, matchPassword) {
     filterMailPassword.map((x) => {
       if (x.mail === matchMail && x.password === matchPassword) {
         console.log("yes");
-        window.location.replace("/src/pages/dashboard.html");
+        window.location.replace(`/src/pages/dashboard.html?${x.id}`);
       } else {
         console.log("no");
       }

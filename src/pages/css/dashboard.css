@@ -30,3 +30,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }
+
+.styleContenitoreImmagini {
+  background-size: cover;
+  background-position: center;
+  border: 1px solid grey;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+
+.elementoDraggabileNOMEparagrafo {
+  font-size: 30px;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+.immagini1 {
+  width: 48%;
+}
