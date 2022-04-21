@@ -15,7 +15,6 @@ const usersList = [
 
 function checkLogin(event) {
   event.preventDefault();
-
   let errorDiv = document.getElementById("error");
   let h4 = document.createElement("h4");
 
@@ -33,14 +32,14 @@ function checkLogin(event) {
   if (validateEmail(email) === null) {
     if (password === "") {
       h4.innerText = "Email and Password are invalid";
-      errorEmailPassword();
+      addErrorTemplate(3);
     } else {
       h4.innerText = "Email is invalid";
-      changeTemplate("mail", "email-error", "email");
+      addErrorTemplate(1);
     }
   } else if (password === "") {
     h4.innerText = "Password is invalid";
-    changeTemplate("password", "password-error", "password");
+    addErrorTemplate(2);
   } else {
     controlEmailAndPassword(email, password, h4);
   }
@@ -56,24 +55,30 @@ function validateEmail(email) {
 
 function controlEmailAndPassword(matchMail, matchPassword, errorText) {
   usersList.map((user) => {
-    if (!(user.mail === matchMail && user.password === matchPassword)) {
-      errorEmailPassword();
-      errorText.innerText = "Email and/or Password is invalid";
-    } else {
+    if (user.mail.match(matchMail) && user.password.match(matchPassword)) {
+      errorText.remove();
       window.location.replace("/src/pages/dashboard.html");
+    } else {
+      errorText.innerText = "Email or Password is invalid";
     }
   });
 }
 
-function changeTemplate(id, newClass, oldClass) {
-  document.getElementById(id).classList.add(newClass);
-  document.getElementById(id).classList.remove(oldClass);
+function removeErrorTemplate(id, removeClass) {
+  document.getElementById(id).classList.remove(removeClass);
 }
 
-function errorEmailPassword() {
-  document.getElementById("mail").classList.add("email-error");
-  document.getElementById("mail").classList.remove("email");
+function addErrorTemplate(target) {
+  if (target === 1) {
+    document.getElementById("mail").classList.add("email-error");
+  }
 
-  document.getElementById("password").classList.add("password-error");
-  document.getElementById("password").classList.remove("password");
+  if (target === 2) {
+    document.getElementById("password").classList.add("password-error");
+  }
+
+  if (target === 3) {
+    document.getElementById("password").classList.add("password-error");
+    document.getElementById("mail").classList.add("email-error");
+  }
 }

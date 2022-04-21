@@ -1,8 +1,34 @@
-<div class="grid h-screen place-items-center">
-  <div class="login">
-    <input type="email" placeholder="email" id="mail" />
-    <input type="password" placeholder="password" id="password" />
+<form class="grid mt-64 h-2/5 place-items-center" onsubmit="checkLogin(event)">
+  <div class="flex w-2/5 mb-4">
+    <input
+      class="w-full h-16 border-t border-t-neutral-400 icon-username"
+      type="email"
+      placeholder="Username"
+      id="mail"
+      onclick="removeErrorTemplate('mail', 'email-error')"
+    />
   </div>
-</div>
+  <div class="flex w-2/5 mb-4">
+    <input
+      class="w-full h-16 border-t border-t-neutral-400 icon-password"
+      type="password"
+      placeholder="Password"
+      id="password"
+      onclick="removeErrorTemplate('password', 'password-error')"
+    />
+  </div>
+  <div class="flex w-2/5 bg-[#43dbcf] text-white">
+    <button class="w-full h-16" type="submit">Sign in</button>
+  </div>
+  <div id="error"></div>
+</form>
 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="/src/pages/css/login.css" />
 <script src="/src/js/login.js"></script>

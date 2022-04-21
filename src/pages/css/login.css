@@ -11,3 +11,17 @@
 .h2-error {
   color: red;
 }
+
+.icon-username {
+  padding-left: 30px;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoWF1QNTAl68HcVCSPlvd3dHKTyzEpp4ConQ&usqp=CAU")
+    no-repeat left white;
+  background-size: 18px;
+}
+
+.icon-password {
+  padding-left: 30px;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUreHSbuTBA3dvKsQRmzVMzoeElcLWfUNjMQ&usqp=CAU")
+    no-repeat left white;
+  background-size: 18px;
+}
