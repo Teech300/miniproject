@@ -1,44 +1,8 @@
-<head>
-  <link rel="stylesheet" href="/src/pages/css/login.css" />
-</head>
-
-<div id="container-login">
-  <div id="design-pattern" class="p-2.5">
-    <h1 class="login-title">LOGIN</h1>
-  </div>
-  <div id="login-forms">
-    <form onsubmit="checkLogin(event)" id="login">
-      <div class="container-icon">
-        <i class="fa-solid fa-arrow-turn-down"></i>
-      </div>
-      <input
-        type="email"
-        id="mail"
-        value=""
-        placeholder="Enter your email"
-        class="email"
-        onclick="changeTemplate('mail', 'email', 'email-error')"
-      />
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter your password"
-        class="password"
-        onclick="changeTemplate('password', 'password', 'password-error')"
-      />
-
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      <button type="submit" class="button-submit">Login</button>
-      <div id="error"></div>
-    </form>
+<div class="grid h-screen place-items-center">
+  <div class="login">
+    <input type="email" placeholder="email" id="mail" />
+    <input type="password" placeholder="password" id="password" />
   </div>
 </div>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+
 <script src="/src/js/login.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
