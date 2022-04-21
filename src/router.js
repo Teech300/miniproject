@@ -1,3 +1,5 @@
+
+
 const route = (event) => {
   event = event || window.event;
   event.preventDefault();
@@ -8,7 +10,7 @@ const route = (event) => {
 const routes = {
   404: "/pages/404.html",
   "/src/index.html": "/src/pages/login.html",
-  "/dashboard.html": "/src/pages/dashboard.html",
+  "/src/pages/dashboard.html": "/src/pages/dashboard.html",
 };
 
 const handleLocation = async () => {

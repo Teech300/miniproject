@@ -2,16 +2,24 @@ const usersList = [
   {
     mail: "taher@sysdata.it",
     password: "password",
+    id: '01Axsert'
   },
   {
     mail: "andrea@sydata.it",
     password: "password",
+    id: '4Ecfg35'
   },
   {
     mail: "alberto@sysdata.it",
     password: "password",
+    id: 'Ait75!ssD'
   },
 ];
+let khiave = []
+usersList.map((x) => {
+  khiave.push(x.id.slice(0))
+})
+window.localStorage.setItem('ciao', khiave);
 
 function checkLogin(event) {
   event.preventDefault();
