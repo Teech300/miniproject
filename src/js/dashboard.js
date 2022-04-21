@@ -33,7 +33,20 @@ function allowDrop(ev) {
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
   eventTarget = ev.target;
+
 }
+
+document.addEventListener("dragenter", function (event) {
+  if (event.target.id == "div2") {
+    event.target.style.border = "3px dotted red";
+
+  }
+});
+document.addEventListener("dragleave", function (event) {
+  if (event.target.id == "div2") {
+    event.target.style.border = "1px solid grey";
+  }
+});
 
 function drop(ev) {
   ev.preventDefault();
@@ -174,6 +187,7 @@ function cancelButton(element) {
   buttonix.classList.add("buttondelete");
   buttonix.innerHTML = 'x'
   buttonix.addEventListener('click', function () {
+    const canc = document.querySelectorAll("#cancel");
     deleter();
     deletecancel(canc)
     element.remove();
