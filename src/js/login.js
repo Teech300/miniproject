@@ -2,54 +2,53 @@ const usersList = [
   {
     mail: "taher@sysdata.it",
     password: "password",
-    id: '01Axsert'
+    id: "01Axsert",
   },
   {
     mail: "andrea@sydata.it",
     password: "password",
-    id: '4Ecfg35'
+    id: "4Ecfg35",
   },
   {
     mail: "alberto@sysdata.it",
     password: "password",
-    id: 'Ait75!ssD'
+    id: "Ait75!ssD",
   },
 ];
-let khiave = []
-usersList.map((x) => {
-  khiave.push(x.id.slice(0))
-})
-window.localStorage.setItem('ciao', khiave);
+const userIds = usersList.map((user) => user.id);
+window.sessionStorage.setItem("userIds", JSON.stringify(userIds));
 
-function checkLogin(event) {
+function checkForm(event) {
   event.preventDefault();
-  let errorDiv = document.getElementById("error");
-  let h4 = document.createElement("h4");
 
-  let email = document.querySelector("#mail").value;
-  let password = document.querySelector("#password").value;
+  const email = document.querySelector("#mail").value;
+  const password = document.querySelector("#password").value;
 
+  const errorDiv = document.getElementById("error");
+  const messageError = document.createElement("h4");
+
+  //check the errorDiv element and see if it has a children at position 0
   if (errorDiv.children[0]) {
     errorDiv.removeChild(errorDiv.children[0]);
   }
 
-  h4.classList.add("h2-error");
-  h4.innerText = "";
-  errorDiv.appendChild(h4);
+  messageError.classList.add("h4-error");
+  messageError.innerText = "";
+  errorDiv.appendChild(messageError);
 
   if (validateEmail(email) === null) {
     if (password === "") {
-      h4.innerText = "Email and Password are invalid";
+      messageError.innerText = "Email and Password are invalid";
       addErrorTemplate(3);
     } else {
-      h4.innerText = "Email is invalid";
+      messageError.innerText = "Email is invalid";
       addErrorTemplate(1);
     }
   } else if (password === "") {
-    h4.innerText = "Password is invalid";
+    messageError.innerText = "Password is invalid";
     addErrorTemplate(2);
   } else {
-    controlEmailAndPassword(email, password, h4);
+    checkEmailAdnPassword(email, password, messageError);
   }
 }
 
@@ -61,8 +60,8 @@ function validateEmail(email) {
     );
 }
 
-function controlEmailAndPassword(matchMail, matchPassword, errorText) {
-  usersList.map((user) => {
+function checkEmailAdnPassword(matchMail, matchPassword, errorText) {
+  usersList.forEach((user) => {
     if (user.mail.match(matchMail) && user.password.match(matchPassword)) {
       errorText.remove();
       window.location.replace("/src/pages/dashboard.html");
