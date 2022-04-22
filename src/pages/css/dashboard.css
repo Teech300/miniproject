@@ -3,16 +3,18 @@
 }
 
 #div1 {
-  border: 1px solid grey;
+
   margin: 1px;
   overflow: scroll;
   display: flex;
   width: 60%;
-  border: 1px solid grey;
+
   margin: 0 1px;
   height: 80vh;
   flex-wrap: wrap;
   cursor: grab;
+  background-color: #9ed0ffeb;
+  width: 50%;
 }
 
 
@@ -27,24 +29,24 @@
   padding: 5px 13px;
   border-radius: 30px;
   border: none;
-  border: 1px solid grey;
+  border: 2px solid rgb(96, 202, 255);
 }
 
 #div2 {
   cursor: grab;
-  border: 1px solid grey;
+
   width: 100%;
   justify-content: center;
   align-items: center;
   margin: 1px;
   position: relative;
-  background-size: 300px;
+  background-size: 400px;
   background-position: center;
   background-repeat: no-repeat;
   height: 20vh;
   overflow: scroll;
   display: flex;
-  border: 1px solid grey;
+  background-color: #9ed0ffeb;
 }
 
 /* width */
@@ -72,28 +74,28 @@
 .styleContenitoreImmagini {
   background-size: cover;
   background-position: center;
-  border: 1px solid grey;
+  border: 2px solid rgb(255, 255, 255);
   width: 100%;
   height: 300px;
   display: flex;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin: 1px;
 }
 
 .elementoDraggabileNOMEparagrafo {
   font-size: 30px;
   color: rgb(0, 0, 0);
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.699);
+  background-color: rgba(255, 255, 255, 0.877);
   border-radius: 10px;
   text-shadow: 1px 1px 1px rgb(70, 70, 70);
-  border: 1px solid grey;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .immagini1 {
-  width: 48%;
+  width: 47%;
   margin: 0.824%;
 }
 
@@ -103,7 +105,7 @@
 }
 
 .buttondelete {
-  border: 1px solid grey;
+
   width: 20px;
   height: 20px;
   position: absolute;
@@ -119,10 +121,15 @@
 #jsonapi {
 
   margin: 1px;
-  border: 1px solid rgb(0, 0, 0);
+
   height: 60vh;
   width: 100%;
   overflow: scroll;
+  background-color: #9ed0ffeb;
+}
+
+#cancel {
+  margin: 5px 30px;
 }
 
 /* 
