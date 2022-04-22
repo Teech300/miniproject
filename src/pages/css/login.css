@@ -1,11 +1,8 @@
-.email-error {
+.error-border,
+.error-border:hover {
   border: 2px solid red;
 }
 
-.password-error {
-  border: 2px solid red;
-}
-
-.h4-error {
+.color-error {
   color: red;
 }

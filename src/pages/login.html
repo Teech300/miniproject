@@ -1,28 +1,47 @@
 <form class="grid mt-64 h-2/5 place-items-center" onsubmit="checkForm(event)">
-  <div class="flex w-2/5 mb-4 rounded-full border-solid border-2 border-sky-500">
-    <i class="p-6 bg-white  fa-solid fa-user border-t-neutral-400 rounded-l-full"></i>
-
-    <input class="w-full h-16 border-t-neutral-400 p-3 outline outline-offset-0 outline-0 rounded-r-full" type="email"
-      placeholder="Username" id="mail" onclick="removeErrorTemplate('mail', 'email-error')" />
+  <div
+    id="box-username"
+    class="flex w-2/5 mb-4 border-2 border-solid rounded-full border-sky-500"
+  >
+    <i class="p-6 bg-white rounded-l-full fa-solid fa-user"></i>
+    <input
+      class="w-full h-16 rounded-r-full outline-none"
+      type="email"
+      placeholder="Enter your username"
+      id="user"
+      onfocus="removeErrorClass('box-username', 'error-border')"
+    />
   </div>
 
-  <div class="flex w-2/5 mb-4 rounded-full border-solid border-2 border-sky-500">
-    <i class="p-6  bg-white  fa-solid fa-lock border-t-neutral-400 rounded-l-full"></i>
-
-    <input class="w-full h-16  border-t-neutral-400 p-3 outline outline-offset-0 outline-0 rounded-r-full"
-      type="password" placeholder="Password" id="password"
-      onclick="removeErrorTemplate('password', 'password-error')" />
+  <div
+    id="box-password"
+    class="flex w-2/5 mb-4 border-2 border-solid rounded-full border-sky-500"
+  >
+    <i class="p-6 bg-white rounded-l-full fa-solid fa-lock"></i>
+    <input
+      class="w-full h-16 rounded-r-full outline-none"
+      type="password"
+      placeholder="Enter your password"
+      id="psw"
+      onfocus="removeErrorClass('box-password', 'error-border')"
+    />
   </div>
 
-  <div class="flex w-2/5 bg-[#9ed0ffeb] text-white rounded-full border-solid border-2 border-sky-500">
-    <button class="w-full h-16  rounded-full " type="submit">Sign in</button>
+  <div
+    class="flex w-2/5 bg-[#9ed0ffeb] text-white rounded-full border-solid border-2 border-sky-500"
+  >
+    <button class="w-full h-16 rounded-full" type="submit">Sign in</button>
   </div>
 
   <div id="error"></div>
 </form>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
   integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 <link rel="stylesheet" href="/src/pages/css/login.css" />
 <script src="/src/js/login.js"></script>

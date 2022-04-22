@@ -15,77 +15,81 @@ const usersList = [
     id: "Ait75!ssD",
   },
 ];
+
+const errorBorder = "error-border";
+const messageError = document.createElement("h4");
+const boxUsername = "box-username";
+const boxPassword = "box-password";
+
 const userIds = usersList.map((user) => user.id);
 window.sessionStorage.setItem("userIds", JSON.stringify(userIds));
 
-function checkForm(event) {
+function submitForm(event) {
   event.preventDefault();
 
-  const email = document.querySelector("#mail").value;
-  const password = document.querySelector("#password").value;
-
-  const errorDiv = document.getElementById("error");
-  const messageError = document.createElement("h4");
+  const username = document.getElementById("user").value;
+  const password = document.getElementById("psw").value;
+  const errorDiv = document.querySelector("#error");
 
   //check the errorDiv element and see if it has a children at position 0
+  //it is used to avoid appending another element to errorDiv
   if (errorDiv.children[0]) {
     errorDiv.removeChild(errorDiv.children[0]);
   }
-
-  messageError.classList.add("h4-error");
+  messageError.classList.add("color-error");
   messageError.innerText = "";
   errorDiv.appendChild(messageError);
 
-  if (validateEmail(email) === null) {
+  //check username and password
+  checkUsernameAndPassword(username, password);
+}
+
+function checkUsernameAndPassword(username, password) {
+  if (validateUsername(username) === null) {
     if (password === "") {
-      messageError.innerText = "Email and Password are invalid";
-      addErrorTemplate(3);
+      messageError.innerText = "Username and password are invalid";
+      addErrorClass("both");
     } else {
-      messageError.innerText = "Email is invalid";
-      addErrorTemplate(1);
+      messageError.innerText = "Username is invalid";
+      addErrorClass(boxUsername);
     }
   } else if (password === "") {
     messageError.innerText = "Password is invalid";
-    addErrorTemplate(2);
+    addErrorClass(boxPassword);
   } else {
-    checkEmailAdnPassword(email, password, messageError);
+    login(username, password);
   }
 }
 
-function validateEmail(email) {
-  return String(email)
+function validateUsername(username) {
+  //check username with Regex
+  return String(username)
     .toLowerCase()
     .match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 }
 
-function checkEmailAdnPassword(matchMail, matchPassword, errorText) {
+function login(username, password) {
   usersList.forEach((user) => {
-    if (user.mail.match(matchMail) && user.password.match(matchPassword)) {
-      errorText.remove();
+    if (user.mail.match(username) && user.password.match(password)) {
+      messageError.remove();
       window.location.replace("/src/pages/dashboard.html");
     } else {
-      errorText.innerText = "Email or Password is invalid";
+      messageError.innerText = "Username or Password is invalid";
     }
   });
 }
 
-function removeErrorTemplate(id, removeClass) {
-  document.getElementById(id).classList.remove(removeClass);
+function removeErrorClass(boxId, errorClass) {
+  document.getElementById(boxId).classList.remove(errorClass);
 }
 
-function addErrorTemplate(target) {
-  if (target === 1) {
-    document.getElementById("mail").classList.add("email-error");
-  }
-
-  if (target === 2) {
-    document.getElementById("password").classList.add("password-error");
-  }
-
-  if (target === 3) {
-    document.getElementById("password").classList.add("password-error");
-    document.getElementById("mail").classList.add("email-error");
+function addErrorClass(target) {
+  if (target === "both") {
+    document.getElementById(boxUsername).classList.add(errorBorder);
+    document.getElementById(boxPassword).classList.add(errorBorder);
+  } else {
+    document.getElementById(target).classList.add(errorBorder);
   }
 }
