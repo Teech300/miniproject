@@ -125,6 +125,7 @@
   overflow: scroll;
 }
 
+/* 
 .containerUniv {
 
   animation-name: example;
@@ -136,6 +137,7 @@
     transform: rotateZ(0deg);
     width: 0%;
     height: 0%;
+    border-radius: 10000px;
     background-color: red;
   }
 
@@ -152,6 +154,7 @@
   100% {
     transform: rotateZ(2520deg);
     width: 100%;
+    border-radius: 0px;
     height: 100%
   }
-}
+} */
