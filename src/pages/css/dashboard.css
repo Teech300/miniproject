@@ -3,7 +3,6 @@
 }
 
 #div1 {
-
   margin: 1px;
   overflow: scroll;
   display: flex;
@@ -13,11 +12,8 @@
   height: 80vh;
   flex-wrap: wrap;
   cursor: grab;
-  background-color: #9ed0ffeb;
   width: 50%;
 }
-
-
 
 .w-full {
   height: 40px;
@@ -105,7 +101,6 @@
 }
 
 .buttondelete {
-
   width: 20px;
   height: 20px;
   position: absolute;
@@ -119,7 +114,6 @@
 }
 
 #jsonapi {
-
   margin: 1px;
 
   height: 60vh;
@@ -130,6 +124,65 @@
 
 #cancel {
   margin: 5px 30px;
+}
+
+.fire {
+  background-color: #f16968;
+}
+
+.grass {
+  background-color: #46c8a9;
+}
+
+.water {
+  background-color: #6fb2f1;
+}
+
+.bug {
+  background-color: #729f3f;
+}
+
+.normal {
+  background-color: #a4acaf;
+}
+
+.flying {
+  background-color: #d2d7d8;
+}
+
+.poison {
+  background-color: #b97fc9;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin-left: 45%;
+  margin-top: 5%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* 

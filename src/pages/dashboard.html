@@ -1,22 +1,25 @@
 <head>
   <link rel="stylesheet" href="/src/pages/css/dashboard.css" />
 </head>
-<input type="text" placeholder="Cerca tutti i pokemon che vuoi" id="input">
+<input type="text" placeholder="Cerca tutti i pokemon che vuoi" id="input" />
 
-<h4 style="text-align: center;">Trascina il nome del Pokemon nel contenitore vuoto superiore</h4>
-<div class="flex items-center justify-center">
-  <div style="display: flex;" id="containerUniv">
-    <div id="div1"> </div>
-    <div class="block" style="width:50%;">
+<h4 id="description" class="text-center"></h4>
+<div id="displayDiv" class="items-center justify-center">
+  <div id="containerUniv">
+    <div id="div1"></div>
+    <div class="block" style="width: 50%">
       <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       <div id="jsonapi"></div>
     </div>
   </div>
 </div>
 
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+<div id="loader" class="loader"></div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
   integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 <script src="../js/dashboard.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
