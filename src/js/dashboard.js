@@ -143,16 +143,16 @@ function designcontainer(filteredArray) {
 // STAMPA ELEMENTO CONTENITORE POKEMON SCHEDA
 
 function chiamatasingle(evt) {
-  let i = evt.id;
+  let idContenitoriPokemon = evt.id;
   if (evt.id.length == 8) {
-    i = evt.id.slice(-2, -1);
+    idContenitoriPokemon = evt.id.slice(-2, -1);
   } else if (evt.id.length == 9) {
-    i = evt.id.slice(-3, -1);
+    idContenitoriPokemon = evt.id.slice(-3, -1);
   } else if (evt.id.length == 10) {
-    i = evt.id.slice(-4, -1);
+    idContenitoriPokemon = evt.id.slice(-4, -1);
   }
   deletecancel(canc);
-  axioscall(i);
+  axioscall(idContenitoriPokemon);
 }
 // CHIAMATA APIAPIAPIAPIAPIAPIAPIAPIAPIAPIAPIAPI
 async function axioscall(i) {
