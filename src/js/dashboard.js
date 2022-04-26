@@ -22,7 +22,7 @@ inputdiRicerca.addEventListener("keyup", function (e) {
     deleter();
     match = e.target.value;
     getAllpokemon(match);
-  }, "1000")
+  }, "1500")
 
 });
 
