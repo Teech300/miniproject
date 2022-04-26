@@ -18,14 +18,15 @@ if (!userList.includes(idUrl)) window.location.replace('/src/index.html')
 
 // FUNZIONERICERCA
 inputdiRicerca.addEventListener("keyup", function (e) {
-  deleter();
-  match = e.target.value;
-  console.log(match);
+  setTimeout(() => {
+    deleter();
+    match = e.target.value;
+    getAllpokemon(match);
+  }, "1000")
 
-  // const container = document.querySelector('#containerUniv')
-  // container.classList.add("containerUniv");
-  getAllpokemon(match);
 });
+
+
 // FUNZIONERICERCA
 
 //DRAG AND DROP
