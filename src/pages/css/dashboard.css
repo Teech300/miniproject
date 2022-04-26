@@ -133,6 +133,12 @@
 
 }
 
+#bottoneFirma {
+  position: absolute;
+  right: 50px;
+  top: 0;
+}
+
 #cancel {
   margin: 5px 30px;
 }

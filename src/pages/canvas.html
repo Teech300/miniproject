@@ -1,0 +1,47 @@
+<!-- onload="init()" -->
+
+<head>
+    <link rel="stylesheet" href="/src/pages/css/canvas.css" />
+</head>
+
+<body>
+    <button id="bottoneFirma" onclick="modificadati()">MODIFICA DATI</button>
+    <div id="constainerfilename">
+        <h2 class="titlefiledowload">Dati importanti</h2>
+        <div id="data-poke">
+
+        </div>
+        <div id="canvasimg1">
+            <h4>Firma:</h4>
+            <img id="canvasimg">
+        </div>
+    </div>
+
+    <div style="border:2px solid;width:400px;">
+        <div class="w-full" id="riquadrofirma">
+            <div>
+                Firma dentro il riquadro :
+            </div>
+            <div>
+                <input type="button" value="x" id="clr" onclick="erase()">
+            </div>
+        </div>
+
+        <canvas id="can" width="400" height="200"> </canvas>
+    </div>
+    <div id="" style="width:400px;">
+        <input type="button" value="save" id="btn" onclick="save()" style="width:100%;">
+
+        <button onclick="takeshot()" style="width:100%;">Dowload as PNG</button>
+    </div>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+    integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../js/canvas.js"></script>
+<!-- <script src="../js/dashboard.js"></script> -->

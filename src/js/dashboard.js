@@ -1,4 +1,5 @@
 let allPokemon = [];
+let arrayNamePokemonJson = [];
 let arrayImmagini = [];
 let eventTarget = null;
 let inputdiRicerca = document.querySelector("#input");
@@ -11,6 +12,9 @@ const div2 = document.querySelector("#div2");
 const jsonapi = document.querySelector("#jsonapi");
 const canc = document.querySelectorAll("#cancel");
 
+function firmacontratto() {
+  window.location.replace("/src/pages/canvas.html");
+}
 
 // VERIFICACHIAVEURL
 if (!userList.includes(idUrl)) window.location.replace('/src/index.html')
@@ -18,10 +22,13 @@ if (!userList.includes(idUrl)) window.location.replace('/src/index.html')
 
 // FUNZIONERICERCA
 inputdiRicerca.addEventListener("keyup", function (e) {
+
   setTimeout(() => {
+
     deleter();
     match = e.target.value;
     getAllpokemon(match);
+
   }, "1500")
 
 });
@@ -139,8 +146,11 @@ function designcontainer(filteredArray) {
     let url = pokemon.url;
     allPokemon.push(url);
 
+
   });
 }
+
+
 // STAMPA ELEMENTO CONTENITORE POKEMON SCHEDA
 
 function chiamatasingle(evt) {
@@ -163,7 +173,10 @@ async function axioscall(i) {
     const listaNomiPokemon = document.createElement("p");
     listaNomiPokemon.id = "cancel";
     listaNomiPokemon.innerHTML = x.move.name;
+    arrayNamePokemonJson.push(x.move.name)
+    window.sessionStorage.setItem("allPokemon", JSON.stringify(arrayNamePokemonJson));
     jsonapi.appendChild(listaNomiPokemon);
+
   });
 }
 

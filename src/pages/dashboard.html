@@ -1,6 +1,7 @@
 <head>
   <link rel="stylesheet" href="/src/pages/css/dashboard.css" />
 </head>
+
 <input type="text" placeholder="Cerca tutti i pokemon che vuoi" id="input">
 
 <h4 style="text-align: center;">Trascina il nome del Pokemon nel contenitore vuoto superiore</h4>
@@ -8,7 +9,9 @@
   <div style="display: flex;" id="containerUniv">
     <div id="div1"> </div>
     <div class="block" style="width:50%;">
-      <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <button id="bottoneFirma" onclick="firmacontratto()">FIRMA</button>
+      </div>
       <div id="jsonapi"></div>
     </div>
   </div>

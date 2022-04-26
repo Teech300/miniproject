@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#formatter {
+    margin: 10px;
+
+}
+
+#riquadrofirma {
+    display: flex;
+    justify-content: space-between;
+}
+
+#riquadrofirma div input {
+    background-color: red;
+    padding: 2px 5px;
+    color: #fff;
+}
+
+#constainerfilename {
+    height: 600px;
+    border: 1px solid grey;
+    position: relative;
+    padding: 20px;
+}
+
+#canvasimg {
+    height: 100px;
+    width: 200px;
+    border: none;
+}
+
+#data-poke {
+
+    width: 100%;
+
+    overflow: scroll;
+
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 30px;
+}
+
+#canvasimg1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 130px;
+    width: 240px;
+}
+
+.titlefiledowload {
+    text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 0, 0);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b3000000;
+}
