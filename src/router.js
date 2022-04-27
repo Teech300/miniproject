@@ -11,6 +11,7 @@ const routes = {
   404: "/pages/404.html",
   "/src/index.html": "/src/pages/login.html",
   "/src/pages/dashboard.html": "/src/pages/dashboard.html",
+  "/src/pages/canvas.html": "/src/pages/canvas.html",
 };
 
 const handleLocation = async () => {
