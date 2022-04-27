@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #formatter {
@@ -33,7 +34,7 @@
     border: 2px solid rgb(33, 172, 197);
     position: relative;
     padding: 20px;
-
+    width: calc(100% - 400px);
 }
 
 #canvasimg {
@@ -56,7 +57,7 @@
 #data-poke {
 
     width: 100%;
-
+    height: 75%;
     overflow: scroll;
 
     display: flex;

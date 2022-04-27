@@ -1,3 +1,4 @@
+
 const loader = document.getElementById("loader");
 loader.classList.add("hidden");
 
@@ -12,6 +13,10 @@ const pokemonAbilities = document.getElementById("pokemon-abilities");
 
 let eventTarget = null;
 let dragOneElemet = 0;
+function firmacontratto() {
+  window.location.replace("/src/pages/canvas.html");
+}
+
 
 const filterPokemon = async () => {
   let userInput = document.getElementById("userInput").value;
@@ -42,7 +47,7 @@ const filterPokemon = async () => {
         description.classList.remove("hidden");
       });
     });
-  }, 2000);
+  }, 1000);
 };
 
 const resetAll = () => {
@@ -62,6 +67,7 @@ const createCard = (customPokemonJson) => {
   card.id = id;
   card.addEventListener("dragover", (event) => event.preventDefault());
   card.classList.add("styleContenitoreImmagini");
+  card.style = 'background-image:url(' + '../../img/' + customPokemonJson.name + '.png' + ');'
   card.classList.add(type);
 
   const dragElement = document.createElement("div");
@@ -110,16 +116,16 @@ const drop = (event) => {
   containerDetails.classList.remove("hidden");
   if (dragOneElemet == 1) {
     dragOneElemet++;
-    let iconCancel = document.createElement("i");
-    iconCancel.classList.add("fa-solid");
-    iconCancel.classList.add("fa-x");
-    iconCancel.addEventListener("click", () => {
-      filterPokemon();
-    });
+    const buttonix = document.createElement("div");
+    buttonix.classList.add("buttondelete");
+    buttonix.innerHTML = ' <button id="bottoneFirma" onclick="firmacontratto()">FIRMA</button>' + 'x';
+    buttonix.addEventListener('click', function () { filterPokemon() });
+    containerDetails.appendChild(buttonix)
     let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
     pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
     pokemonType.innerText = event.dataTransfer.getData("type");
     pokemonImg.src = event.dataTransfer.getData("img");
+    window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
     abilities.forEach((ability) => {
       let elementLi = document.createElement("li");
       elementLi.innerText = ability;
