@@ -80,7 +80,7 @@
   width: 18%;
 }
 
-#userInput {
+.userInput {
   width: 80%;
   height: 43px;
   padding: 5px 13px;
@@ -158,11 +158,9 @@
 .block {
   width: 40%;
   height: 80vh;
-
 }
 
 .buttondelete {
-
   width: 20px;
   height: 20px;
   position: absolute;
@@ -177,14 +175,12 @@
 }
 
 #jsonapi {
-
   margin-top: 2px;
   border-radius: 10px;
   border: 2px solid rgb(33, 172, 197);
   height: 59vh;
   width: 100%;
   overflow: scroll;
-
 }
 
 #bottoneFirma {
@@ -237,6 +233,5 @@
   }
 } */
 * {
-
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
