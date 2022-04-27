@@ -21,8 +21,8 @@ function firmacontratto() {
 }
 
 const searchPokemon = async () => {
-  buttonSearch.classList.add("hidden");
   let userInput = document.getElementById("userInput").value;
+  document.getElementById("btn-search").disabled = true;
 
   resetAll();
 
@@ -147,6 +147,7 @@ const changeTemplate = () => {
   loader.classList.remove("block");
   description.classList.remove("hidden");
   description.classList.add("flex");
+  document.getElementById("btn-search").disabled = false;
 };
 
 const resetAll = () => {
