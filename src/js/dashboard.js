@@ -205,7 +205,7 @@ async function getUser(name) {
 function cancelButton(element) {
   const buttonix = document.createElement("div");
   buttonix.classList.add("buttondelete");
-  buttonix.innerHTML = 'x'
+  buttonix.innerHTML = ' <button id="bottoneFirma" onclick="firmacontratto()">FIRMA</button>' + 'x'
   buttonix.addEventListener('click', function () {
     const canc = document.querySelectorAll("#cancel");
     deleter();

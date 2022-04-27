@@ -16,21 +16,41 @@
 
 #riquadrofirma div input {
     background-color: red;
-    padding: 2px 5px;
+    padding: 2px 7px;
     color: #fff;
+    border-radius: 30px;
+}
+
+#firma-q {
+    border-radius: 10px;
+    border: 2px solid rgb(33, 172, 197);
 }
 
 #constainerfilename {
-    height: 60vh;
-    border: 1px solid grey;
+    height: calc(100vh - 80px);
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 2px solid rgb(33, 172, 197);
     position: relative;
     padding: 20px;
+
 }
 
 #canvasimg {
     height: 100px;
     width: 200px;
     border: none;
+}
+
+.idbtn {
+    background-color: #ffffffeb;
+    padding: 3px 6px;
+    border-radius: 20px;
+    border: 2px solid rgb(33, 172, 197);
+    margin-top: 10px;
+    color: #fff;
+    background-color: red;
+
 }
 
 #data-poke {
@@ -51,6 +71,8 @@
     height: 130px;
     width: 240px;
 }
+
+
 
 .titlefiledowload {
     text-align: center;
@@ -76,4 +98,13 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #b3000000;
+}
+
+body {
+    padding: 0px 30px;
+}
+
+.fle1x {
+    display: flex;
+    margin: 10px 0;
 }
