@@ -5,6 +5,7 @@ loader.classList.add("hidden");
 const containerDetails = document.getElementById("card-details");
 const containerPokemon = document.getElementById("card-pokemon");
 const description = document.getElementById("description");
+description.classList.add("hidden");
 
 const pokemonName = document.getElementById("pokemon-name");
 const pokemonType = document.getElementById("pokemon-type");
@@ -45,6 +46,7 @@ const filterPokemon = async () => {
         loader.classList.add("hidden");
         loader.classList.remove("block");
         description.classList.remove("hidden");
+        description.classList.add("flex");
       });
     });
   }, 1000);
@@ -54,6 +56,7 @@ const resetAll = () => {
   containerPokemon.innerHTML = "";
   loader.classList.remove("hidden");
   description.classList.add("hidden");
+  description.classList.remove("flex");
   containerDetails.classList.add("hidden");
   pokemonAbilities.innerHTML = "";
   dragOneElemet = 0;

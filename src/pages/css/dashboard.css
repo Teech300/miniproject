@@ -4,11 +4,27 @@
   border-top: 16px solid #3498db;
   width: 120px;
   height: 120px;
-  -webkit-animation: spin 2s linear infinite;
+  -webkit-animation: spin 1.2s linear infinite;
   /* Safari */
-  animation: spin 2s linear infinite;
-  margin-left: 45%;
-  margin-top: 5%;
+  animation: spin 1.2s linear infinite;
+  position: absolute;
+  z-index: 333;
+  top: calc(50vh - 60px);
+  left: calc(50% - 60px);
+}
+
+.description {
+  justify-content: center;
+  align-items: center;
+  border: 3px dotted rgb(159, 159, 159);
+  margin: 20px;
+  border-radius: 20px;
+}
+
+#card-details {
+  border: 3px dotted rgb(159, 159, 159);
+  margin: 20px;
+  border-radius: 20px;
 }
 
 .styleContenitoreImmagini {
@@ -48,6 +64,10 @@
 
 .hidden {
   display: none;
+}
+
+.flex {
+  display: flex;
 }
 
 .block {

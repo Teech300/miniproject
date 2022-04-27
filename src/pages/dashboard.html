@@ -1,42 +1,24 @@
 <head>
   <link rel="stylesheet" href="/src/pages/css/dashboard.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <div class="p-10 text-center">
-  <input
-    type="text"
-    class="border-blue-200 border-2 p-2 focus:outline-none userInput"
-    maxlength="25"
-    placeholder="Search a pokemon"
-    id="userInput"
-  />
-  <button
-    id="btn-search"
+  <input type="text" class="border-blue-200 border-2 p-2 focus:outline-none userInput" maxlength="25"
+    placeholder="Search a pokemon" id="userInput" />
+  <button id="btn-search"
     class="border-blue-200 border-2 p-2 focus:outline-none hover:bg-blue-300 ease-out duration-300"
-    onclick="filterPokemon()"
-  >
+    onclick="filterPokemon()">
     Invia
   </button>
 </div>
 <div id="loader" class="loader"></div>
 
-<div
-  class="grid h-4/5 grid-cols-2 w-full"
-  ondrop="drop(event)"
-  ondragover="allowDrop(event)"
->
-  <div
-    class="basis-1/2 p-10 overflow-x-hidden grid grid-cols-2 grid-flow-row gap-4 w-4/4"
-    id="card-pokemon"
-  ></div>
-  <p id="description" class="ml-40 mt-40 hidden">
+<div class="grid h-4/5 grid-cols-2 w-full" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <div class="basis-1/2 p-10 overflow-x-hidden grid grid-cols-2 grid-flow-row gap-4 w-4/4" id="card-pokemon"></div>
+  <p id="description" class="description">
     Trascina qui pokemon per vedere le sue mosse
   </p>
   <div class="basis-1/2 text-center hidden p-10" id="card-details">
@@ -51,11 +33,8 @@
     </div>
   </div>
 </div>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
   integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../js/dashboard.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
