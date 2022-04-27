@@ -1,27 +1,31 @@
-
 const loader = document.getElementById("loader");
 loader.classList.add("hidden");
 
+const buttonSearch = document.getElementById("btn-search");
+
 const containerDetails = document.getElementById("card-details");
 const containerPokemon = document.getElementById("card-pokemon");
+
 const description = document.getElementById("description");
 description.classList.add("hidden");
+description.classList.remove("flex");
 
 const pokemonName = document.getElementById("pokemon-name");
 const pokemonImg = document.getElementById("pokemon-img");
 const pokemonAbilities = document.getElementById("pokemon-abilities");
 
 let eventTarget = null;
-let dragOneElemet = 0;
+let dragAndDropCounter = 0;
 function firmacontratto() {
   window.location.replace("/src/pages/canvas.html");
 }
 
-
-const filterPokemon = async () => {
+const searchPokemon = async () => {
+  buttonSearch.classList.add("hidden");
   let userInput = document.getElementById("userInput").value;
 
   resetAll();
+
   setTimeout(async () => {
     await getAllPokemon().then((response) => {
       let filteredArray = response.filter((pokemon) =>
@@ -41,24 +45,12 @@ const filterPokemon = async () => {
           name: pokemonDetails.data.name,
           type: pokemonDetails.data.types[0].type.name,
         };
+
         createCard(customJson);
-        loader.classList.add("hidden");
-        loader.classList.remove("block");
-        description.classList.remove("hidden");
-        description.classList.add("flex");
+        changeTemplate();
       });
     });
   }, 1000);
-};
-
-const resetAll = () => {
-  containerPokemon.innerHTML = "";
-  loader.classList.remove("hidden");
-  description.classList.add("hidden");
-  description.classList.remove("flex");
-  containerDetails.classList.add("hidden");
-  pokemonAbilities.innerHTML = "";
-  dragOneElemet = 0;
 };
 
 const createCard = (customPokemonJson) => {
@@ -68,8 +60,8 @@ const createCard = (customPokemonJson) => {
 
   card.id = id;
   card.addEventListener("dragover", (event) => event.preventDefault());
-  card.classList.add("styleContenitoreImmagini");
-  card.style = `background-image:url(${imgUrl})`
+  card.classList.add("cardImage");
+  card.style = `background-image:url(${imgUrl})`;
   card.classList.add(type);
 
   const dragElement = document.createElement("div");
@@ -77,9 +69,9 @@ const createCard = (customPokemonJson) => {
   dragElement.id = name;
   dragElement.draggable = true;
   dragElement.addEventListener("dragstart", (event) => {
-    if (dragOneElemet == 0) {
-      dragOneElemet++;
-      paragraph.innerText = 'Is not available...'
+    if (dragAndDropCounter == 0) {
+      dragAndDropCounter++;
+      paragraph.innerText = "Is not available...";
       event.dataTransfer.setData("name", event.target.id);
       event.dataTransfer.setData("abilities", JSON.stringify(abilities));
       event.dataTransfer.setData(
@@ -102,6 +94,29 @@ const createCard = (customPokemonJson) => {
   containerPokemon.appendChild(card);
 };
 
+const drop = (event) => {
+  if (dragAndDropCounter == 1) {
+    description.classList.add("hidden");
+    containerDetails.classList.remove("hidden");
+    dragAndDropCounter++;
+
+    createCancelButton();
+
+    let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
+
+    pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
+    pokemonImg.src = event.dataTransfer.getData("img");
+
+    window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
+
+    abilities.forEach((ability) => {
+      let elementLi = document.createElement("li");
+      elementLi.innerText = ability;
+      pokemonAbilities.appendChild(elementLi);
+    });
+  }
+};
+
 const getAllPokemon = async () => {
   let response;
   try {
@@ -113,28 +128,33 @@ const getAllPokemon = async () => {
   return response;
 };
 
-const drop = (event) => {
-  description.classList.add("hidden");
-  containerDetails.classList.remove("hidden");
-  if (dragOneElemet == 1) {
-    dragOneElemet++;
-    const buttonix = document.createElement("div");
-    buttonix.classList.add("buttondelete");
-    buttonix.innerHTML = 'x';
-    buttonix.addEventListener('click', function () { filterPokemon() });
-    containerDetails.appendChild(buttonix);
-    let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
-    pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
-    pokemonImg.src = event.dataTransfer.getData("img");
-    window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
-    abilities.forEach((ability) => {
-      let elementLi = document.createElement("li");
-      elementLi.innerText = ability;
-      pokemonAbilities.appendChild(elementLi);
-    });
-  }
+const createCancelButton = () => {
+  const buttonix = document.createElement("div");
+  buttonix.classList.add("buttondelete");
+  buttonix.innerHTML = "x";
+  buttonix.addEventListener("click", () => {
+    searchPokemon();
+  });
+  containerDetails.appendChild(buttonix);
 };
 
 const allowDrop = (event) => {
   event.preventDefault();
+};
+
+const changeTemplate = () => {
+  loader.classList.add("hidden");
+  loader.classList.remove("block");
+  description.classList.remove("hidden");
+  description.classList.add("flex");
+};
+
+const resetAll = () => {
+  containerPokemon.innerHTML = "";
+  loader.classList.remove("hidden");
+  description.classList.add("hidden");
+  description.classList.remove("flex");
+  containerDetails.classList.add("hidden");
+  pokemonAbilities.innerHTML = "";
+  dragAndDropCounter = 0;
 };
