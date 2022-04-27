@@ -1,6 +1,6 @@
 let allPokemondata = window.sessionStorage.getItem('allPokemon');
 let jsondatapokemondata = JSON.parse(allPokemondata)
-console.log(jsondatapokemondata)
+
 const dati = document.querySelector('#data-poke')
 
 async function pastePokemonAllData() {
@@ -92,7 +92,7 @@ function takeshot() {
 // csnvastoimage
 // csnvastoimage
 function save() {
-    // document.getElementById("canvasimg").style.border = "2px solid red";
+
     var dataURL = canvas.toDataURL();
     document.getElementById("canvasimg").src = dataURL;
     document.getElementById("canvasimg").style.display = "inline";
@@ -129,4 +129,4 @@ function findxy(res, e) {
     }
 }
 
-init()
+init();
