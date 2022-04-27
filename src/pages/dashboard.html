@@ -8,9 +8,7 @@
 <div class="p-10 text-center">
   <input type="text" class="border-blue-200 border-2 p-2 focus:outline-none userInput" maxlength="25"
     placeholder="Search a pokemon" id="userInput" />
-  <button id="btn-search"
-    class="border-blue-200 border-2 p-2 focus:outline-none hover:bg-blue-300 ease-out duration-300"
-    onclick="filterPokemon()">
+  <button id="btn-search" onclick="filterPokemon()">
     Invia
   </button>
 </div>
@@ -23,14 +21,19 @@
   </p>
   <div class="basis-1/2 text-center hidden p-10" id="card-details">
     <p class="box-style" id="pokemon-name"></p>
-    <p class="text-left" id="pokemon-type">type</p>
 
-    <img id="pokemon-img" class="mt-20 h-20" />
+    <div id="img">
+      <img id="pokemon-img" />
+    </div>
 
-    <div class="box-style mt-8 h-auto border-blue-200 border-2">
+    <div class="box-style h-auto border-blue-200 border-2">
       <span>Mosse</span>
       <ul id="pokemon-abilities" class="text-left"></ul>
     </div>
+    <div class=" float-right ">
+      <button id="bottoneFirma" onclick="firmacontratto()">FIRMA</button>
+    </div>
+
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"

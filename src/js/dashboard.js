@@ -8,7 +8,6 @@ const description = document.getElementById("description");
 description.classList.add("hidden");
 
 const pokemonName = document.getElementById("pokemon-name");
-const pokemonType = document.getElementById("pokemon-type");
 const pokemonImg = document.getElementById("pokemon-img");
 const pokemonAbilities = document.getElementById("pokemon-abilities");
 
@@ -70,7 +69,7 @@ const createCard = (customPokemonJson) => {
   card.id = id;
   card.addEventListener("dragover", (event) => event.preventDefault());
   card.classList.add("styleContenitoreImmagini");
-  card.style = 'background-image:url(' + '../../img/' + customPokemonJson.name + '.png' + ');'
+  card.style = `background-image:url(${imgUrl})`
   card.classList.add(type);
 
   const dragElement = document.createElement("div");
@@ -80,7 +79,7 @@ const createCard = (customPokemonJson) => {
   dragElement.addEventListener("dragstart", (event) => {
     if (dragOneElemet == 0) {
       dragOneElemet++;
-      paragraph.innerText = "Is not available...";
+      paragraph.innerText = 'Is not available...'
       event.dataTransfer.setData("name", event.target.id);
       event.dataTransfer.setData("abilities", JSON.stringify(abilities));
       event.dataTransfer.setData(
@@ -121,12 +120,11 @@ const drop = (event) => {
     dragOneElemet++;
     const buttonix = document.createElement("div");
     buttonix.classList.add("buttondelete");
-    buttonix.innerHTML = ' <button id="bottoneFirma" onclick="firmacontratto()">FIRMA</button>' + 'x';
+    buttonix.innerHTML = 'x';
     buttonix.addEventListener('click', function () { filterPokemon() });
-    containerDetails.appendChild(buttonix)
+    containerDetails.appendChild(buttonix);
     let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
     pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
-    pokemonType.innerText = event.dataTransfer.getData("type");
     pokemonImg.src = event.dataTransfer.getData("img");
     window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
     abilities.forEach((ability) => {
