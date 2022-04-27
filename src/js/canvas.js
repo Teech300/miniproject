@@ -6,7 +6,6 @@ const dati = document.querySelector('#data-poke')
 async function pastePokemonAllData() {
 
     jsondatapokemondata.map((pokemonname) => {
-
         console.log(pokemonname)
         const listaNomiPokemonName = document.createElement("p");
         listaNomiPokemonName.id = "formatter";
