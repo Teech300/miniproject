@@ -39,7 +39,7 @@
 }
 
 #canvasimg {
-    height: 100px;
+    /* height: 100px; */
     width: 200px;
     border: none;
 }
@@ -72,7 +72,7 @@
     bottom: 0;
     right: 0;
     height: 130px;
-    width: 240px;
+    width: 210px;
 }
 
 
