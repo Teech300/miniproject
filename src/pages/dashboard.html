@@ -29,7 +29,7 @@
 
 <div
   id="loader"
-  class="border-16 animate-spin h-28 w-28 rounded-full border-t-8 border-t-[#3498db] absolute top-[calc(50vh - 60px)] left-[45%]"
+  class="border-16 animate-spin h-28 w-28 rounded-full border-t-8 border-t-[#3498db] absolute top-[42%] left-[45%]"
 ></div>
 
 <div class="grid h-4/5 grid-cols-2 w-full">
@@ -56,13 +56,11 @@
       id="pokemon-name"
     ></p>
 
-    <div id="img" class="h-72 flex justify-center w-full">
+    <div id="img" class="h-64 flex justify-center w-full">
       <img id="pokemon-img" />
     </div>
 
-    <div
-      class="p-2 bg-white rounded-lg border-slate-200 border opacity-80 text-xl h-auto border-blue-200 border-2"
-    >
+    <div class="box-style h-auto border p-4">
       <span>Mosse</span>
       <ul id="pokemon-abilities" class="text-left"></ul>
     </div>
@@ -76,12 +74,12 @@
       </button>
     </div>
   </div>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+    integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </div>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
-  integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-<script src="../js/dashboard.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
