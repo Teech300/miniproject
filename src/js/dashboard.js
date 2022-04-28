@@ -7,6 +7,7 @@ const containerDetails = document.getElementById("card-details");
 const containerPokemon = document.getElementById("card-pokemon");
 
 const description = document.getElementById("description");
+// description.location.assign("https://www.w3schools.com")
 description.classList.add("hidden");
 description.classList.remove("flex");
 

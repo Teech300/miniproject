@@ -5,7 +5,7 @@ const usersList = [
     id: "01Axsert",
   },
   {
-    mail: "andrea@sydata.it",
+    mail: "andrea@sysdata.it",
     password: "password",
     id: "4Ecfg35",
   },
@@ -21,8 +21,6 @@ const messageError = document.createElement("h4");
 const boxUsername = "box-username";
 const boxPassword = "box-password";
 
-const userIds = usersList.map((user) => user.id);
-window.sessionStorage.setItem("userIds", JSON.stringify(userIds));
 
 function submitForm(event) {
   event.preventDefault();
@@ -39,7 +37,6 @@ function submitForm(event) {
   messageError.classList.add("color-error");
   messageError.innerText = "";
   errorDiv.appendChild(messageError);
-
   //check username and password
   checkUsernameAndPassword(username, password);
 }
@@ -74,7 +71,10 @@ function login(username, password) {
   usersList.forEach((user) => {
     if (user.mail.match(username) && user.password.match(password)) {
       messageError.remove();
-      window.location.replace("/src/pages/dashboard.html");
+      // const userIds = usersList.map((user) => user.id);
+      window.sessionStorage.setItem("userIds", JSON.stringify(user.id));
+
+      window.location.replace("/src/pages/dashboard.html?" + user.id);
     } else {
       messageError.innerText = "Username or Password is invalid";
     }
