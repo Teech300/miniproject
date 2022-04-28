@@ -26,32 +26,6 @@
   display: block;
 }
 
-#btn-search {
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-  width: 18%;
-  padding: 8px;
-  outline-color: #bfdbfe;
-  transition: 0.4s;
-  border: 2px solid #bfdbfe;
-  background-color: #ffffff;
-  height: 43px;
-}
-
-#btn-search:hover {
-  background-color: #bfdbfe;
-}
-
-.userInput {
-  width: 80%;
-  height: 43px;
-  padding: 5px 13px;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border: none;
-  border: 2px solid #bfdbfe;
-}
-
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -67,18 +41,6 @@
   background: rgb(0, 0, 0);
   border-radius: 10px;
   border-radius: 10px;
-}
-
-#img {
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
 }
 
 .cardImage {
@@ -107,30 +69,12 @@
   opacity: 0.8;
 }
 
-.immagini1 {
-  width: 100%;
-  height: 140px;
-  margin: 0.824%;
-  transition: 0.5s;
-}
-
-.immagini1:hover {
-  width: 100%;
-  margin: 0.824%;
-  height: 300px;
-}
-
-.block {
-  width: 40%;
-  height: 80vh;
-}
-
 .buttondelete {
   width: 20px;
   height: 20px;
   position: absolute;
   right: 95px;
-  top: 195px;
+  top: 198px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,28 +84,6 @@
   cursor: pointer;
 }
 
-#jsonapi {
-  margin-top: 2px;
-  border-radius: 10px;
-  border: 2px solid rgb(33, 172, 197);
-  height: 59vh;
-  width: 100%;
-  overflow: scroll;
-}
-
-#bottoneFirma {
-  padding: 3px 6px;
-  border-radius: 20px;
-  border: 2px solid rgb(255, 255, 255);
-  color: #fff;
-  background-color: red;
-  margin-top: 15px;
-}
-
 #cancel {
   margin: 5px 30px;
-}
-
-* {
-  font-family: "Montserrat", sans-serif;
 }
