@@ -159,3 +159,4 @@ const resetAll = () => {
   pokemonAbilities.innerHTML = "";
   dragAndDropCounter = 0;
 };
+searchPokemon();
