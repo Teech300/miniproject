@@ -20,15 +20,29 @@ function modificadati() {
 }
 
 pastePokemonAllData()
-var canvas, ctx, flag = false,
+let canvas, ctx, flag = false,
     prevX = 0,
     currX = 0,
     prevY = 0,
     currY = 0,
     dot_flag = false;
 
-var x = "black",
-    y = 20;
+let x = "black",
+    y = 2;
+
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo");
+let slider1 = document.getElementById("head");
+output.innerHTML = slider.value;
+
+slider.oninput = function () {
+    y = this.value
+    output.innerHTML = this.value;
+}
+
+slider1.oninput = function () {
+    x = this.value
+}
 
 function init() {
     canvas = document.getElementById('can');
@@ -51,6 +65,7 @@ function init() {
 }
 
 function draw() {
+
     ctx.beginPath();
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
@@ -61,7 +76,7 @@ function draw() {
 }
 
 function erase() {
-    var m = confirm("Vuoi riprovare la firma?");
+    let m = confirm("Vuoi riprovare la firma?");
     if (m) {
         ctx.clearRect(0, 0, w, h);
         document.getElementById("canvasimg").style.display = "none";
