@@ -32,40 +32,35 @@
     id="card-pokemon"
   ></div>
 
-  <p
-    id="description"
+  <div
     class="justify-center items-center border-2 border-dotted m-5 rounded-2xl border-slate-400"
     ondrop="drop(event)"
     ondragover="allowDrop(event)"
   >
-    Drag the pokemon's name here to see its moves
-  </p>
+    <p id="description">Drag the pokemon's name here to see its moves</p>
+    <div class="basis-1/2 text-center hidden p-10" id="card-details">
+      <p
+        class="p-2 bg-white rounded-lg border-slate-200 border opacity-80 text-xl text-shadow"
+        id="pokemon-name"
+      ></p>
 
-  <div
-    class="basis-1/2 text-center hidden p-10 border-2 border-dotted m-5 rounded-2xl border-slate-400"
-    id="card-details"
-  >
-    <p
-      class="p-2 bg-white rounded-lg border-slate-200 border opacity-80 text-xl text-shadow"
-      id="pokemon-name"
-    ></p>
+      <div id="img" class="h-64 flex justify-center w-full">
+        <img id="pokemon-img" />
+      </div>
 
-    <div id="img" class="h-64 flex justify-center w-full">
-      <img id="pokemon-img" />
-    </div>
-
-    <div class="box-style text-shadow h-auto border p-4">
-      <span>Mosse</span>
-      <ul id="pokemon-abilities" class="text-left"></ul>
-    </div>
-    <div class="float-right">
-      <button
-        id="bottoneFirma"
-        class="p-2 rounded-2xl text-white bg-red-500 mt-3.5"
-        onclick="firmacontratto()"
-      >
-        FIRMA
-      </button>
+      <div class="box-style text-shadow h-auto border p-4">
+        <span>Mosse</span>
+        <ul id="pokemon-abilities" class="text-left"></ul>
+      </div>
+      <div class="float-right">
+        <button
+          id="bottoneFirma"
+          class="p-2 rounded-2xl text-white bg-red-500 mt-3.5"
+          onclick="firmacontratto()"
+        >
+          FIRMA
+        </button>
+      </div>
     </div>
   </div>
   <script

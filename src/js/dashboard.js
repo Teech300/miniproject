@@ -14,8 +14,8 @@ const pokemonName = document.getElementById("pokemon-name");
 const pokemonImg = document.getElementById("pokemon-img");
 const pokemonAbilities = document.getElementById("pokemon-abilities");
 
-let dragAndDropCounter = 0;
 let timer = 0;
+let saveParentId = "";
 
 inputSearch.addEventListener("keyup", (event) => {
   if (timer !== 0) {
@@ -23,46 +23,28 @@ inputSearch.addEventListener("keyup", (event) => {
   }
   resetTemplate();
   timer = setTimeout(() => {
-    searchPokemon(event);
+    searchPokemon(event.target.value);
     changeTemplate();
   }, 1500);
 });
 
-const searchPokemon = async (event) => {
-  let userInput = event.target.value;
+const searchPokemon = async (userInput) => {
   getAllPokemon().then((response) => {
     let filteredArray = response.filter((pokemon) =>
       pokemon.name.includes(userInput)
     );
-    if (filteredArray.length !== 0) {
-      createJsonAndCard(filteredArray);
-    } else {
-      notFoundTemplate();
-    }
+    createJsonAndCard(filteredArray);
   });
 };
 
-const notFoundTemplate = () => {
-  containerPokemon.innerHTML = "";
-  loader.classList.add("hidden");
-  loader.classList.remove("block");
-  description.classList.add("hidden");
-  description.classList.remove("flex");
-  containerDetails.classList.add("hidden");
-  pokemonAbilities.innerHTML = "";
-  dragAndDropCounter = 0;
-  document.getElementById("not-found").innerText = "Pokemon not found...";
-};
-
 const resetTemplate = () => {
-  containerPokemon.innerHTML = "";
   loader.classList.remove("hidden");
   description.classList.add("hidden");
   description.classList.remove("flex");
   containerDetails.classList.add("hidden");
-  pokemonAbilities.innerHTML = "";
-  dragAndDropCounter = 0;
-  document.getElementById("not-found").innerText = "";
+  removeChildElement(pokemonAbilities);
+  removeChildElement(containerPokemon);
+  saveParentId = "";
 };
 
 //TODO
@@ -111,14 +93,11 @@ const createCard = (customPokemonJson) => {
   dragElement.id = name;
   dragElement.draggable = true;
   dragElement.addEventListener("dragstart", (event) => {
-    if (dragAndDropCounter == 0) {
-      dragAndDropCounter++;
-      paragraph.innerText = "Pokemon is not available...";
-      event.dataTransfer.setData("name", name);
-      event.dataTransfer.setData("abilities", JSON.stringify(abilities));
-      // event.dataTransfer.setData("type", type);
-      event.dataTransfer.setData("img", imgUrl);
-    }
+    event.dataTransfer.setData("name", name);
+    event.dataTransfer.setData("idParent", event.target.parentElement.id);
+    event.dataTransfer.setData("abilities", JSON.stringify(abilities));
+    // event.dataTransfer.setData("type", type);
+    event.dataTransfer.setData("img", imgUrl);
   });
 
   const paragraph = document.createElement("p");
@@ -144,26 +123,35 @@ const allowDrop = (event) => {
 };
 
 const drop = (event) => {
-  if (dragAndDropCounter == 1) {
-    description.classList.add("hidden");
-    containerDetails.classList.remove("hidden");
-    dragAndDropCounter++;
+  description.classList.add("hidden");
+  containerDetails.classList.remove("hidden");
+  let parentId = event.dataTransfer.getData("idParent");
 
-    createDeleteButton();
+  removeChildElement(pokemonAbilities);
 
-    let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
-
-    pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
-    pokemonImg.src = event.dataTransfer.getData("img");
-
-    window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
-
-    abilities.forEach((ability) => {
-      let li = document.createElement("li");
-      li.innerText = ability;
-      pokemonAbilities.appendChild(li);
-    });
+  if (saveParentId === "") {
+    document.getElementById(parentId).style.display = "none";
+    saveParentId = parentId;
+  } else {
+    document.getElementById(saveParentId).style.display = "block";
+    document.getElementById(parentId).style.display = "none";
+    saveParentId = parentId;
   }
+
+  createDeleteButton();
+
+  let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
+
+  pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
+  pokemonImg.src = event.dataTransfer.getData("img");
+
+  window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
+
+  abilities.forEach((ability) => {
+    let li = document.createElement("li");
+    li.innerText = ability;
+    pokemonAbilities.appendChild(li);
+  });
 };
 
 const createDeleteButton = () => {
@@ -171,11 +159,21 @@ const createDeleteButton = () => {
   buttonix.classList.add("buttondelete");
   buttonix.innerHTML = "x";
   buttonix.addEventListener("click", () => {
-    searchPokemon();
+    searchPokemon("");
   });
   containerDetails.appendChild(buttonix);
 };
 
 const firmacontratto = () => {
   window.location.replace("/src/pages/canvas.html");
+};
+
+const removeChildElement = (container) => {
+  //pokemonAbilities //containerPokemon
+  if (container.children[0]) {
+    let childArray = Array.from(container.children);
+    childArray.forEach((child) => {
+      container.removeChild(child);
+    });
+  }
 };
