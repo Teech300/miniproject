@@ -12,25 +12,19 @@
 <div class="p-10 text-center">
   <input
     type="text"
-    class="border-blue-200 rounded-l-full border-2 p-2 w-4/6 focus:outline-none"
+    class="border-blue-200 rounded-full border-2 p-2 w-4/6 focus:outline-none"
     maxlength="25"
     placeholder="Search pokemons"
     id="userInput"
   />
-
-  <button
-    id="btn-search"
-    class="w-1/6 p-2 rounded-r-full bg-white border-blue-200 border-2 hover:bg-blue-200 ease-in duration-300"
-    onclick="searchPokemon()"
-  >
-    Search
-  </button>
 </div>
 
 <div
   id="loader"
   class="border-16 animate-spin h-28 w-28 rounded-full border-t-8 border-t-[#3498db] absolute top-[42%] left-[45%]"
 ></div>
+
+<h3 id="not-found" class="text-center text-3xl"></h3>
 
 <div class="grid h-4/5 grid-cols-2 w-full">
   <div

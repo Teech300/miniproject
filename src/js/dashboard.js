@@ -1,7 +1,7 @@
 const loader = document.getElementById("loader");
 loader.classList.add("hidden");
 
-const buttonSearch = document.getElementById("btn-search");
+const inputSearch = document.getElementById("userInput");
 
 const containerDetails = document.getElementById("card-details");
 const containerPokemon = document.getElementById("card-pokemon");
@@ -15,27 +15,43 @@ const pokemonImg = document.getElementById("pokemon-img");
 const pokemonAbilities = document.getElementById("pokemon-abilities");
 
 let dragAndDropCounter = 0;
+let timer = 0;
 
-const searchPokemon = async () => {
-  let userInput = document.getElementById("userInput").value;
-  disableSearchButton(true);
+inputSearch.addEventListener("keyup", (event) => {
+  if (timer !== 0) {
+    clearTimeout(timer);
+  }
   resetTemplate();
+  timer = setTimeout(() => {
+    searchPokemon(event);
+    changeTemplate();
+  }, 1500);
+});
 
-  setTimeout(async () => {
-    await getAllPokemon().then((response) => {
-      let filteredArray = response.filter((pokemon) =>
-        pokemon.name.includes(userInput)
-      );
-
+const searchPokemon = async (event) => {
+  let userInput = event.target.value;
+  getAllPokemon().then((response) => {
+    let filteredArray = response.filter((pokemon) =>
+      pokemon.name.includes(userInput)
+    );
+    if (filteredArray.length !== 0) {
       createJsonAndCard(filteredArray);
-      changeTemplate();
-      disableSearchButton(false);
-    });
-  }, 1000);
+    } else {
+      notFoundTemplate();
+    }
+  });
 };
 
-const disableSearchButton = (isDisable) => {
-  document.getElementById("btn-search").disabled = isDisable;
+const notFoundTemplate = () => {
+  containerPokemon.innerHTML = "";
+  loader.classList.add("hidden");
+  loader.classList.remove("block");
+  description.classList.add("hidden");
+  description.classList.remove("flex");
+  containerDetails.classList.add("hidden");
+  pokemonAbilities.innerHTML = "";
+  dragAndDropCounter = 0;
+  document.getElementById("not-found").innerText = "Pokemon not found...";
 };
 
 const resetTemplate = () => {
@@ -46,8 +62,10 @@ const resetTemplate = () => {
   containerDetails.classList.add("hidden");
   pokemonAbilities.innerHTML = "";
   dragAndDropCounter = 0;
+  document.getElementById("not-found").innerText = "";
 };
 
+//TODO
 const getAllPokemon = async () => {
   let response;
   try {
@@ -161,5 +179,3 @@ const createDeleteButton = () => {
 const firmacontratto = () => {
   window.location.replace("/src/pages/canvas.html");
 };
-
-searchPokemon();
