@@ -11,11 +11,13 @@ description.classList.add("hidden");
 description.classList.remove("flex");
 
 const pokemonName = document.getElementById("pokemon-name");
+const pokemonTypes = document.getElementById("pokemon-types");
 const pokemonImg = document.getElementById("pokemon-img");
 const pokemonAbilities = document.getElementById("pokemon-abilities");
 
 let timer = 0;
 let saveParentId = "";
+let saveParentBackground = "";
 
 inputSearch.addEventListener("keyup", (event) => {
   if (timer !== 0) {
@@ -24,11 +26,12 @@ inputSearch.addEventListener("keyup", (event) => {
   resetTemplate();
   timer = setTimeout(() => {
     searchPokemon(event.target.value);
-    changeTemplate();
-  }, 700);
+  }, 1500);
 });
 
 const searchPokemon = async (userInput) => {
+  resetTemplate();
+  changeTemplate();
   getAllPokemon().then((response) => {
     let filteredArray = response.filter((pokemon) =>
       pokemon.name.includes(userInput)
@@ -62,17 +65,18 @@ const getAllPokemon = async () => {
 const createJsonAndCard = (filteredArray) => {
   filteredArray.forEach(async (pokemon) => {
     let pokemonDetails = await axios.get(pokemon.url);
-
     let listOfAbilities = pokemonDetails.data.abilities.map(
       (details) => details.ability.name
     );
+
+    let listOfType = pokemonDetails.data.types.map((type) => type.type.name);
 
     let customJson = {
       id: pokemonDetails.data.id,
       imgUrl: `../../img/${pokemonDetails.data.name}.png`,
       abilities: listOfAbilities,
       name: pokemonDetails.data.name,
-      type: pokemonDetails.data.types[0].type.name,
+      type: listOfType,
     };
 
     createCard(customJson);
@@ -81,47 +85,44 @@ const createJsonAndCard = (filteredArray) => {
 
 const createCard = (customPokemonJson) => {
   const { id, imgUrl, abilities, name, type } = { ...customPokemonJson };
-
   const card = document.createElement("div");
   card.id = id;
   card.addEventListener("dragover", (event) => event.preventDefault());
   card.classList.add("cardImage");
   card.style = `background-image:url(${imgUrl})`;
-  card.classList.add(type);
+  card.classList.add(type[0]);
 
   const dragElement = document.createElement("div");
-
-  const dragElementparagraph = document.createElement("p");
-  const dragElementid = document.createElement("p");
-  dragElementid.classList.add("id-style-code");
-  abilities.forEach((abilita) => {
-    dragElementparagraph.innerText = abilita;
-  })
-  dragElementid.innerHTML = '#00' + id
-  dragElementparagraph.classList.add("abilities-style");
-  console.log(dragElementparagraph)
-
   dragElement.id = name;
   dragElement.draggable = true;
+  dragElement.classList.add("pokemon");
   dragElement.addEventListener("dragstart", (event) => {
     event.dataTransfer.setData("name", name);
-    event.dataTransfer.setData("idParent", event.target.parentElement.id);
+    event.dataTransfer.setData("idParent", id);
     event.dataTransfer.setData("abilities", JSON.stringify(abilities));
+    event.dataTransfer.setData("types", JSON.stringify(type));
     event.dataTransfer.setData("img", imgUrl);
   });
 
-  const paragraph = document.createElement("p");
+  const spanElement = document.createElement("span");
 
-  paragraph.classList.add("box-style");
-  paragraph.classList.add("text-shadow");
-  paragraph.innerText = name.toUpperCase();
+  spanElement.classList.add("text-style");
+  spanElement.classList.add("uppercase");
+  spanElement.innerText = name;
 
-  dragElement.appendChild(paragraph);
-  card.appendChild(dragElementparagraph)
+  const typeSection = document.createElement("div");
+
+  type.forEach((kind) => {
+    let textElement = document.createElement("span");
+    textElement.innerText = kind;
+    textElement.classList.add("typeText");
+    typeSection.append(textElement);
+  });
+
+  dragElement.appendChild(spanElement);
+  dragElement.appendChild(typeSection);
   card.appendChild(dragElement);
-  card.appendChild(dragElementid)
   containerPokemon.appendChild(card);
-  // dragElementparagraph.appendChild(card)
 };
 
 const changeTemplate = () => {
@@ -138,27 +139,27 @@ const allowDrop = (event) => {
 const drop = (event) => {
   description.classList.add("hidden");
   containerDetails.classList.remove("hidden");
+
   let parentId = event.dataTransfer.getData("idParent");
-
-  removeChildElement(pokemonAbilities);
-
-  if (saveParentId === "") {
-    document.getElementById(parentId).style.display = "none";
-    saveParentId = parentId;
-  } else {
-    document.getElementById(saveParentId).style.display = "block";
-    document.getElementById(parentId).style.display = "none";
-    saveParentId = parentId;
-  }
-
-  createDeleteButton();
-
+  let listOfTypes = JSON.parse(event.dataTransfer.getData("types"));
   let abilities = JSON.parse(event.dataTransfer.getData("abilities"));
 
-  pokemonName.innerText = event.dataTransfer.getData("name").toUpperCase();
+  removeChildElement(pokemonAbilities);
+  removeChildElement(pokemonTypes);
+  saveIdAndBackgroundColor(parentId, listOfTypes[0]);
+
+  // createDeleteButton();
+  pokemonName.innerText = event.dataTransfer.getData("name");
   pokemonImg.src = event.dataTransfer.getData("img");
 
-  window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
+  // window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
+
+  listOfTypes.forEach((type) => {
+    let span = document.createElement("span");
+    span.innerText = type;
+    span.classList.add("typeText");
+    pokemonTypes.appendChild(span);
+  });
 
   abilities.forEach((ability) => {
     let li = document.createElement("li");
@@ -172,6 +173,7 @@ const createDeleteButton = () => {
   buttonix.classList.add("buttondelete");
   buttonix.innerHTML = "x";
   buttonix.addEventListener("click", () => {
+    removeChildElement(containerPokemon);
     searchPokemon("");
   });
   containerDetails.appendChild(buttonix);
@@ -183,10 +185,28 @@ const firmacontratto = () => {
 
 const removeChildElement = (container) => {
   //pokemonAbilities //containerPokemon
-  if (container.children.length !== 0) {
-    let childArray = Array.from(container.children);
-    childArray.forEach((child) => {
-      container.removeChild(child);
-    });
+  if (container) {
+    if (container.children[0]) {
+      let childArray = Array.from(container.children);
+      childArray.forEach((child) => {
+        container.removeChild(child);
+      });
+    }
   }
-};  
+};
+
+const saveIdAndBackgroundColor = (parentId, backgroundColor) => {
+  if (saveParentId === "") {
+    document.getElementById(parentId).style.display = "none";
+    saveParentId = parentId;
+    containerDetails.classList.add(backgroundColor);
+    saveParentBackground = backgroundColor;
+  } else {
+    document.getElementById(saveParentId).style.display = "block";
+    document.getElementById(parentId).style.display = "none";
+    containerDetails.classList.remove(saveParentBackground);
+    containerDetails.classList.add(backgroundColor);
+    saveParentId = parentId;
+    saveParentBackground = backgroundColor;
+  }
+};

@@ -1,13 +1,13 @@
 .grass {
-  background-color: #85ca1d;
+  background-color: #46c8a9;
 }
 
 .water {
-  background-color: #4592c4;
+  background-color: #6eb7f5;
 }
 
 .fire {
-  background-color: #fd7d24;
+  background-color: #f16968;
 }
 
 .normal {
@@ -16,10 +16,6 @@
 
 .bug {
   background-color: #668d3a;
-}
-
-.text-shadow {
-  text-shadow: 1px 1px 1px rgb(70, 70, 70);
 }
 
 .remove-submit-event {
@@ -65,12 +61,8 @@
   width: 100%;
   height: 220px;
   padding: 5px;
-  display: flex;
   border-radius: 10px;
-  justify-content: center;
-  align-items: baseline;
   margin: 1px;
-  position: relative;
 }
 
 .abilities-style {
@@ -83,34 +75,69 @@
   background-color: rgba(255, 255, 255, 0.29);
   border-radius: 10px;
   border: 1px solid rgba(192, 192, 192, 0.116);
-
 }
 
-.box-style {
+.text-style {
   font-size: 20px;
-  color: rgb(233, 233, 233);
-  padding: 5px;
-  background-color: rgba(255, 255, 255, 0);
-  border-radius: 10px;
-  border: 1px solid rgba(192, 192, 192, 0.116);
-  opacity: 0.8;
+  color: white;
+  font-weight: 600;
 }
 
 .buttondelete {
   width: 20px;
   height: 20px;
   position: absolute;
-  right: 95px;
-  top: 196px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  right: 145px;
+  top: 109px;
   font-size: 27px;
   font-weight: bold;
   color: rgb(33, 172, 197);
   cursor: pointer;
 }
 
+.typeText {
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 0px 5px 4px 5px;
+  background-color: white;
+  opacity: 0.5;
+  color: black;
+  font-weight: 600;
+  display: flex;
+  width: fit-content;
+  margin: 5px;
+}
+
+.img-pokemon {
+  height: 280px;
+  width: 280px;
+  z-index: 10 !important;
+}
+
+.dispaly-img-pokemon {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  margin-bottom: 5px;
+}
+
+.pokemon {
+  position: relative;
+  top: 30px;
+  left: 30px;
+}
+
 #cancel {
   margin: 5px 30px;
+}
+
+.uppercase {
+  @apply uppercase;
+}
+
+.select2-search {
+  @apply border border-gray-300 rounded;
+}
+.select2-results__group {
+  @apply text-lg font-bold text-gray-900;
 }

@@ -1,48 +1,73 @@
 <head>
   <link rel="stylesheet" href="/src/pages/css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 
-<div class="p-10 text-center">
-  <input type="text" class="border-blue-200 rounded-full border-2 p-2 w-4/6 focus:outline-none" maxlength="25"
-    placeholder="Search pokemons" id="userInput" />
+<div class="p-5 text-center">
+  <input
+    type="text"
+    class="border-blue-200 rounded-full border-2 p-2 w-4/6 focus:outline-none"
+    maxlength="25"
+    placeholder="Search pokemons"
+    id="userInput"
+  />
 </div>
 
-<div id="loader"
-  class="border-16 animate-spin h-28 w-28 rounded-full border-t-8 border-t-[#3498db] absolute top-[42%] left-[45%]">
-</div>
+<div
+  id="loader"
+  class="border-16 animate-spin h-28 w-28 rounded-full border-t-8 border-t-[#3498db] absolute top-[42%] left-[45%]"
+></div>
 
 <h3 id="not-found" class="text-center text-3xl"></h3>
 
-<div class="grid h-4/5 grid-cols-2 w-full">
-  <div class="basis-1/2 p-10 overflow-x-hidden grid grid-cols-2 grid-flow-row gap-4 w-4/4" id="card-pokemon"></div>
+<div class="flex justify-center h-4/5 w-full">
+  <div
+    class="basis-1/2 p-5 overflow-x-hidden grid grid-cols-2 grid-flow-row gap-4 w-6/12"
+    id="card-pokemon"
+  ></div>
 
-  <div class=" flex justify-center items-center border-2 border-dotted m-5 rounded-2xl border-slate-400"
-    ondrop="drop(event)" ondragover="allowDrop(event)">
+  <div
+    class="flex m-5 w-4/12 hover:border-dotted"
+    ondrop="drop(event)"
+    ondragover="allowDrop(event)"
+  >
     <p id="description">Drag the pokemon's name here to see its moves</p>
-    <div class="basis-1/2 text-center hidden p-10" id="card-details">
-      <p class="p-2 bg-white rounded-lg border-slate-200 border opacity-80 text-xl text-shadow" id="pokemon-name"></p>
-
-      <div id="img" class="h-64 flex justify-center w-full">
-        <img id="pokemon-img" />
+    <div
+      class="h-full w-full p-0 m-0 relative border hidden rounded-[30px] border-slate-400"
+      id="card-details"
+    >
+      <div class="text-3xl font-semibold relative top-10 left-5 text-white">
+        <span class="capitalize" id="pokemon-name"></span>
       </div>
 
-      <div class="box-style text-shadow h-auto border p-4">
-        <span>Mosse</span>
-        <ul id="pokemon-abilities" class="text-left"></ul>
+      <div class="relative top-10 left-3.5 inline-flex" id="pokemon-types">
+        <!-- <span class="typeText">grass</span>
+        <span class="typeText">poison</span> -->
       </div>
-      <div class="float-right">
-        <button id="bottoneFirma" class="p-2 rounded-2xl text-white bg-red-500 mt-3.5" onclick="firmacontratto()">
-          FIRMA
-        </button>
+      <div class="dispaly-img-pokemon">
+        <img id="pokemon-img" class="img-pokemon" />
+      </div>
+      <div
+        class="w-full h-32 absolute bottom-0 text-center rounded-[30px] bg-white"
+        id="card-moves"
+      >
+        <span class="text-2xl font-semibold">Mosse</span>
+        <ul class="p-4 decoration-none" id="pokemon-abilities"></ul>
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
     integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script src="../js/dashboard.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </div>
