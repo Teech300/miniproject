@@ -3,6 +3,7 @@ loader.classList.add("hidden");
 
 const inputSearch = document.getElementById("userInput");
 
+
 const containerDetails = document.getElementById("card-details");
 const containerPokemon = document.getElementById("card-pokemon");
 
@@ -16,21 +17,23 @@ const pokemonAbilities = document.getElementById("pokemon-abilities");
 
 let timer = 0;
 let saveParentId = "";
-
+let match = null
 inputSearch.addEventListener("keyup", (event) => {
   if (timer !== 0) {
     clearTimeout(timer);
   }
   resetTemplate();
   timer = setTimeout(() => {
-    searchPokemon(event.target.value);
+    match = event.target.value
+    searchPokemon(match);
     changeTemplate();
   }, 700);
 });
-
+let filteredArray = []
 const searchPokemon = async (userInput) => {
+
   getAllPokemon().then((response) => {
-    let filteredArray = response.filter((pokemon) =>
+    filteredArray = response.filter((pokemon) =>
       pokemon.name.includes(userInput)
     );
     createJsonAndCard(filteredArray);
@@ -97,6 +100,7 @@ const createCard = (customPokemonJson) => {
   abilities.forEach((abilita) => {
     dragElementparagraph.innerText = abilita;
   })
+
   dragElementid.innerHTML = '#00' + id
   dragElementparagraph.classList.add("abilities-style");
   console.log(dragElementparagraph)
@@ -172,7 +176,17 @@ const createDeleteButton = () => {
   buttonix.classList.add("buttondelete");
   buttonix.innerHTML = "x";
   buttonix.addEventListener("click", () => {
-    searchPokemon("");
+
+    // while (containerDetails.firstChild) {
+    //   containerDetails.removeChild(containerDetails.firstChild);
+    // }
+
+    let cardd = document.querySelectorAll('.cardImage')
+    cardd.forEach((card) => {
+      card.remove()
+    })
+
+    searchPokemon(match);
   });
   containerDetails.appendChild(buttonix);
 };
