@@ -11,6 +11,7 @@ description.classList.add("hidden");
 description.classList.remove("flex");
 
 const pokemonName = document.getElementById("pokemon-name");
+const pokemonId = document.getElementById("pokemon-id");
 const pokemonTypes = document.getElementById("pokemon-types");
 const pokemonImg = document.getElementById("pokemon-img");
 const pokemonAbilities = document.getElementById("pokemon-abilities");
@@ -18,22 +19,27 @@ const pokemonAbilities = document.getElementById("pokemon-abilities");
 let timer = 0;
 let saveParentId = "";
 let saveParentBackground = "";
-
-inputSearch.addEventListener("keyup", (event) => {
+const startSearch = (event) => {
+  let input;
+  if (event === "") {
+    input = event;
+  } else {
+    input = event.target.value;
+  }
   if (timer !== 0) {
     clearTimeout(timer);
   }
   resetTemplate();
   timer = setTimeout(() => {
-    searchPokemon(event.target.value);
+    searchPokemon(input);
   }, 1500);
-});
-
+};
+let filteredArray = [];
 const searchPokemon = async (userInput) => {
   resetTemplate();
   changeTemplate();
   getAllPokemon().then((response) => {
-    let filteredArray = response.filter((pokemon) =>
+    filteredArray = response.filter((pokemon) =>
       pokemon.name.includes(userInput)
     );
     createJsonAndCard(filteredArray);
@@ -92,6 +98,17 @@ const createCard = (customPokemonJson) => {
   card.style = `background-image:url(${imgUrl})`;
   card.classList.add(type[0]);
 
+  const idPokemonNumber = document.createElement("span");
+  let idPokemon;
+
+  if (id < 10) {
+    idPokemon = `#00${id}`;
+  } else {
+    idPokemon = `#0${id}`;
+  }
+  idPokemonNumber.innerText = idPokemon;
+  idPokemonNumber.classList.add("id-pokemon");
+
   const dragElement = document.createElement("div");
   dragElement.id = name;
   dragElement.draggable = true;
@@ -102,6 +119,7 @@ const createCard = (customPokemonJson) => {
     event.dataTransfer.setData("abilities", JSON.stringify(abilities));
     event.dataTransfer.setData("types", JSON.stringify(type));
     event.dataTransfer.setData("img", imgUrl);
+    event.dataTransfer.setData("idPokemonNumber", idPokemon);
   });
 
   const spanElement = document.createElement("span");
@@ -121,6 +139,7 @@ const createCard = (customPokemonJson) => {
 
   dragElement.appendChild(spanElement);
   dragElement.appendChild(typeSection);
+  card.appendChild(idPokemonNumber);
   card.appendChild(dragElement);
   containerPokemon.appendChild(card);
 };
@@ -148,8 +167,8 @@ const drop = (event) => {
   removeChildElement(pokemonTypes);
   saveIdAndBackgroundColor(parentId, listOfTypes[0]);
 
-  // createDeleteButton();
   pokemonName.innerText = event.dataTransfer.getData("name");
+  pokemonId.innerText = event.dataTransfer.getData("idPokemonNumber");
   pokemonImg.src = event.dataTransfer.getData("img");
 
   // window.sessionStorage.setItem("allPokemon", JSON.stringify(abilities));
@@ -166,17 +185,6 @@ const drop = (event) => {
     li.innerText = ability;
     pokemonAbilities.appendChild(li);
   });
-};
-
-const createDeleteButton = () => {
-  const buttonix = document.createElement("div");
-  buttonix.classList.add("buttondelete");
-  buttonix.innerHTML = "x";
-  buttonix.addEventListener("click", () => {
-    removeChildElement(containerPokemon);
-    searchPokemon("");
-  });
-  containerDetails.appendChild(buttonix);
 };
 
 const firmacontratto = () => {

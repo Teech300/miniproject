@@ -16,6 +16,7 @@
     maxlength="25"
     placeholder="Search pokemons"
     id="userInput"
+    onkeyup="startSearch(event)"
   />
 </div>
 
@@ -42,8 +43,16 @@
       class="h-full w-full p-0 m-0 relative border hidden rounded-[30px] border-slate-400"
       id="card-details"
     >
+      <i
+        class="fa-solid fa-xmark float-right relative top-[20px] right-[20px] text-2xl cursor-pointer"
+        onclick="startSearch('')"
+      ></i>
       <div class="text-3xl font-semibold relative top-10 left-5 text-white">
         <span class="capitalize" id="pokemon-name"></span>
+        <span
+          class="relative left-[50%] text-base right-0"
+          id="pokemon-id"
+        ></span>
       </div>
 
       <div class="relative top-10 left-3.5 inline-flex" id="pokemon-types">

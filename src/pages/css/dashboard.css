@@ -131,6 +131,13 @@
   margin: 5px 30px;
 }
 
+.id-pokemon {
+  float: right;
+  font-size: 40px;
+  font-weight: 600;
+  opacity: 0.1;
+}
+
 .uppercase {
   @apply uppercase;
 }
