@@ -25,7 +25,7 @@ inputSearch.addEventListener("keyup", (event) => {
   timer = setTimeout(() => {
     searchPokemon(event.target.value);
     changeTemplate();
-  }, 1500);
+  }, 700);
 });
 
 const searchPokemon = async (userInput) => {
@@ -90,13 +90,23 @@ const createCard = (customPokemonJson) => {
   card.classList.add(type);
 
   const dragElement = document.createElement("div");
+
+  const dragElementparagraph = document.createElement("p");
+  const dragElementid = document.createElement("p");
+  dragElementid.classList.add("id-style-code");
+  abilities.forEach((abilita) => {
+    dragElementparagraph.innerText = abilita;
+  })
+  dragElementid.innerHTML = '#00' + id
+  dragElementparagraph.classList.add("abilities-style");
+  console.log(dragElementparagraph)
+
   dragElement.id = name;
   dragElement.draggable = true;
   dragElement.addEventListener("dragstart", (event) => {
     event.dataTransfer.setData("name", name);
     event.dataTransfer.setData("idParent", event.target.parentElement.id);
     event.dataTransfer.setData("abilities", JSON.stringify(abilities));
-    // event.dataTransfer.setData("type", type);
     event.dataTransfer.setData("img", imgUrl);
   });
 
@@ -107,8 +117,11 @@ const createCard = (customPokemonJson) => {
   paragraph.innerText = name.toUpperCase();
 
   dragElement.appendChild(paragraph);
+  card.appendChild(dragElementparagraph)
   card.appendChild(dragElement);
+  card.appendChild(dragElementid)
   containerPokemon.appendChild(card);
+  // dragElementparagraph.appendChild(card)
 };
 
 const changeTemplate = () => {
@@ -170,10 +183,10 @@ const firmacontratto = () => {
 
 const removeChildElement = (container) => {
   //pokemonAbilities //containerPokemon
-  if (container.children[0]) {
+  if (container.children.length !== 0) {
     let childArray = Array.from(container.children);
     childArray.forEach((child) => {
       container.removeChild(child);
     });
   }
-};
+};  
